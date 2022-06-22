@@ -5,6 +5,8 @@
 #include <a_samp>
 #include <YSI_Data\y_iterate>
 #define WC_CUSTOM_VENDING_MACHINES false
+#include <omp>
+#include <Pawn.RakNet>
 //#include <weapon-config>
 #include <a_mysql>
 #include <geolocation>
@@ -15,51 +17,51 @@
 /******************************************************************************/
 
 #include "dtb/weaponmodels.pwn" // weapon models
-#include "dtb/weaponslots.pwn" // weapon slots
-#include "dtb/soundforall.pwn" // play sound for all function
-#include "dtb/preloadanim.pwn" // preload animations
-#include "dtb/dialogs.pwn" // dialog enum
-#include "dtb/framerate.pwn" // get player framerate
-#include "dtb/float.pwn" // float functions
-#include "dtb/timestring.pwn" // Time > Time String
-#include "dtb/health.pwn" // on player health set
-#include "dtb/armour.pwn" // on player armour set
-#include "dtb/isspawned.pwn" // is player spawned function
-#include "dtb/keys.pwn" // key macros
-#include "dtb/colors.pwn" // colors
-#include "dtb/name.pwn" // name player variables
-#include "dtb/ip.pwn" // ip adress player variables
-#include "dtb/gpci.pwn" // gpci player variables
-#include "dtb/geoip.pwn" // GEOIP player variables
-#include "dtb/sessiontime.pwn" // get player session time
-#include "dtb/adminlevels.pwn" // admin level names
-#include "dtb/skipclass.pwn" // skip class selection
+#include "dtb/weaponslots.pwn"	// weapon slots
+#include "dtb/soundforall.pwn"	// play sound for all function
+#include "dtb/preloadanim.pwn"	// preload animations
+#include "dtb/dialogs.pwn"		// dialog enum
+#include "dtb/framerate.pwn"	// get player framerate
+#include "dtb/float.pwn"		// float functions
+#include "dtb/timestring.pwn"	// Time > Time String
+#include "dtb/health.pwn"		// on player health set
+#include "dtb/armour.pwn"		// on player armour set
+#include "dtb/isspawned.pwn"	// is player spawned function
+#include "dtb/keys.pwn"			// key macros
+#include "dtb/colors.pwn"		// colors
+#include "dtb/name.pwn"			// name player variables
+#include "dtb/ip.pwn"			// ip adress player variables
+#include "dtb/gpci.pwn"			// gpci player variables
+#include "dtb/geoip.pwn"		// GEOIP player variables
+#include "dtb/sessiontime.pwn"	// get player session time
+#include "dtb/adminlevels.pwn"	// admin level names
+#include "dtb/skipclass.pwn"	// skip class selection
 
 // data
 #include "dtb/ac/data.pwn"
-#include "dtb/game/data.pwn" // game stuff
-#include "dtb/pause.pwn" // pause detection
-#include "dtb/spec/data.pwn" // spectate stuff
-#include "dtb/map/data.pwn" // set map
-#include "dtb/team/data.pwn" // team stuff
-#include "dtb/bomb/data.pwn" // bomb stuff
+#include "dtb/game/data.pwn"	// game stuff
+#include "dtb/pause.pwn"		// pause detection
+#include "dtb/spec/data.pwn"	// spectate stuff
+#include "dtb/map/data.pwn"		// set map
+#include "dtb/team/data.pwn"	// team stuff
+#include "dtb/bomb/data.pwn"	// bomb stuff
 #include "dtb/skinhit/data.pwn" // damage sync
 #include "dtb/warzone/data.pwn" // warzone stuff
 #include "dtb/wepmenu/data.pwn" // weapon selection
-#include "dtb/tptd/data.pwn" // HUD; alive & dead team players
-#include "dtb/thtd/data.pwn" // HUD; team current health
-#include "dtb/phtd/data.pwn" // HUD; player current health & armour
-#include "dtb/sbtd/data.pwn" // HUD; scoreboard at end of rounds
-#include "dtb/timetd/data.pwn" // HUD; time left of the round
+#include "dtb/tptd/data.pwn"	// HUD; alive & dead team players
+#include "dtb/thtd/data.pwn"	// HUD; team current health
+#include "dtb/phtd/data.pwn"	// HUD; player current health & armour
+#include "dtb/sbtd/data.pwn"	// HUD; scoreboard at end of rounds
+#include "dtb/timetd/data.pwn"	// HUD; time left of the round
 #include "dtb/antilag/data.pwn" // Monitors fps, ping, packetloss and auto kicks
-#include "dtb/hpicon/data.pwn" // damage icon above players head
-#include "dtb/pshow/data.pwn" // show & hide player blips
+#include "dtb/hpicon/data.pwn"	// damage icon above players head
+#include "dtb/pshow/data.pwn"	// show & hide player blips
 #include "dtb/mission/data.pwn" // mission
-#include "dtb/rdata/data.pwn" // round stats; temporary
-#include "dtb/level/data.pwn" // xp & levels
+#include "dtb/rdata/data.pwn"	// round stats; temporary
+#include "dtb/level/data.pwn"	// xp & levels
 #include "dtb/kickban/data.pwn" // kick & ban stuff
-#include "dtb/db/data.pwn" // database stuff
-#include "dtb/irc/data.pwn" // IRC Echo
+#include "dtb/db/data.pwn"		// database stuff
+#include "dtb/irc/data.pwn"		// IRC Echo
 
 // macros
 #include "dtb/map/macro/interior.pwn"
@@ -430,9 +432,11 @@
 
 /******************************************************************************/
 
-main(){}
+#include <YSI_Coding\y_hooks>
 
-public OnGameModeInit()
+main() {}
+
+hook OnGameModeInit()
 {
 	// Hostname
 	SendRconCommand("hostname [DTB] Defend The Bombsite");
@@ -444,7 +448,7 @@ public OnGameModeInit()
 	UsePlayerPedAnims();
 
 	// Disable Stunt Cash (do not remove!)
-    EnableStuntBonusForAll(0);
+	EnableStuntBonusForAll(0);
 
 	// Disable Door Entries & Exits
 	DisableInteriorEnterExits();
@@ -455,59 +459,58 @@ public OnGameModeInit()
 	// Essential class (do not remove!)
 	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
 
-	// create the custom map "italy" (credits to DarknessLighter, do not remove)
-	#include "dtb/map/italy.pwn"
+// create the custom map "italy" (credits to DarknessLighter, do not remove)
+#include "dtb/map/italy.pwn"
 }
 
-public OnGameModeExit()
+hook OnGameModeExit()
 {
 	// destroy custom map
-	for(new objectid = 1; objectid <= MAX_OBJECTS; objectid ++)
+	for (new objectid = 1; objectid <= MAX_OBJECTS; objectid++)
 	{
-		if(IsValidObject(objectid))
-		    DestroyObject(objectid);
+		if (IsValidObject(objectid))
+			DestroyObject(objectid);
 	}
 }
 
-public OnPlayerSpawn(playerid)
+hook OnPlayerSpawn(playerid)
 {
-	if(g_PlayerRoundKilled{playerid})
-	    return TogglePlayerSpectating(playerid, true), 1;
+	if (g_PlayerRoundKilled { playerid })
+		return TogglePlayerSpectating(playerid, true), 1;
 
 	// Set Weapon Skills
-    SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 998);
-    SetPlayerSkillLevel(playerid, WEAPONSKILL_MICRO_UZI, 998);
-    SetPlayerSkillLevel(playerid, WEAPONSKILL_SAWNOFF_SHOTGUN, 998);
+	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 998);
+	SetPlayerSkillLevel(playerid, WEAPONSKILL_MICRO_UZI, 998);
+	SetPlayerSkillLevel(playerid, WEAPONSKILL_SAWNOFF_SHOTGUN, 998);
 
 	// Preload Animations
 	PreloadAnimLib(playerid, "OTB");
 
 	// Countdown Freeze
-    TogglePlayerControllable(playerid, false);
+	TogglePlayerControllable(playerid, false);
 	return 1;
 }
 
-public OnPlayerCommandReceived(playerid, cmdtext[])
+hook OnPlayerCommandReceived(playerid, cmdtext[])
 {
-	if(ac_CheckPlayerFlooding(playerid))
+	if (ac_CheckPlayerFlooding(playerid))
 		return 0;
 	else
 		return 1;
 }
 
-public OnPlayerCommandPerformed(playerid, cmdtext[], success)
+hook OnPlayerCommandPerformed(playerid, cmdtext[], success)
 {
-	if(!success)
+	if (!success)
 	{
 		SendClientMessage(playerid, COLOR_RED, "This command is unknown!");
 		cmd_cmds(playerid);
 	}
-	return  1;
+	return 1;
 }
 
-
-public OnPlayerUpdate(playerid)
+hook OnPlayerUpdate(playerid)
 {
 	// Only send player updates if the player is not frozen
-	return IsPlayerControllable(playerid);
-}
+	return 1;//IsPlayerControllable(playerid);
+// }
