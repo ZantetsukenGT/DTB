@@ -1,17 +1,19 @@
-native IsValidVehicle(vehicleid);
-native WP_Hash(buffer[], len, const str[]);
-native gpci(playerid, serial[], len);
+#pragma dynamic 3500000
+#define CGEN_MEMORY 40000
+#define MAX_PLAYERS 50
 
 #include <a_samp>
-#include <zcmd>
-#include <sscanf2>
-#include <geolocation>
+#include <YSI_Data\y_iterate>
+#define WC_CUSTOM_VENDING_MACHINES false
+//#include <weapon-config>
 #include <a_mysql>
+#include <geolocation>
 #include <irc>
+#include <whirlpool>
+#include <zcmd>
 
 /******************************************************************************/
 
-#include "dtb/weaponnames.pwn" // weapon names hook
 #include "dtb/weaponmodels.pwn" // weapon models
 #include "dtb/weaponslots.pwn" // weapon slots
 #include "dtb/soundforall.pwn" // play sound for all function
@@ -23,9 +25,7 @@ native gpci(playerid, serial[], len);
 #include "dtb/health.pwn" // on player health set
 #include "dtb/armour.pwn" // on player armour set
 #include "dtb/isspawned.pwn" // is player spawned function
-#include "dtb/controllable.pwn" // is player controllable
 #include "dtb/keys.pwn" // key macros
-#include "dtb/isodd.pwn" // isodd macro
 #include "dtb/colors.pwn" // colors
 #include "dtb/name.pwn" // name player variables
 #include "dtb/ip.pwn" // ip adress player variables
@@ -33,7 +33,6 @@ native gpci(playerid, serial[], len);
 #include "dtb/geoip.pwn" // GEOIP player variables
 #include "dtb/sessiontime.pwn" // get player session time
 #include "dtb/adminlevels.pwn" // admin level names
-#include "dtb/packetloss.pwn" // packetloss
 #include "dtb/skipclass.pwn" // skip class selection
 
 // data
