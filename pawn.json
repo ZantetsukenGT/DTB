@@ -7,7 +7,6 @@
 		"Zeex/samp-plugin-crashdetect",
 		"pawn-lang/samp-stdlib",
 		"pawn-lang/YSI-Includes@5.x",
-		"samp-incognito/samp-irc-plugin",
 		"Southclaws/samp-whirlpool",
 		"Southclaws/zcmd",
 		"Y-Less/sscanf",
