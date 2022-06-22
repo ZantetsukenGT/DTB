@@ -1,17 +1,16 @@
 forward OnPlayerSessionsLoaded(playerid);
 public OnPlayerSessionsLoaded(playerid)
 {
-	for(new row, rows = cache_get_row_count(g_DBHandle); row < rows; row ++)
+	new rows;
+	if (!cache_get_row_count(rows))
+		return 1;
+	for (new row; row < rows; row++)
 	{
-		new
-			accountid = cache_get_field_content_int(row, "session_account_id", g_DBHandle),
-			query[100]
-		;
+		new accountid, query[100];
+		cache_get_value_int(row, "session_account_id", accountid);
 
-        mysql_format(g_DBHandle, query, sizeof query,
-            "SELECT * FROM bans WHERE ban_to_account_id = %i LIMIT 1", accountid
-		);
-   	    mysql_tquery(g_DBHandle, query, "OnPlayerBanLoaded", "i", playerid);
+		mysql_format(g_DBHandle, query, sizeof(query), "SELECT * FROM bans WHERE ban_to_account_id = %i LIMIT 1", accountid);
+		mysql_tquery(g_DBHandle, query, "OnPlayerBanLoaded", "i", playerid);
 	}
-    return 1;
+	return 1;
 }

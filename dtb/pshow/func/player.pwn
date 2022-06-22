@@ -1,6 +1,6 @@
-ShowPlayerForPlayer(playerid, forplayerid, bool:show)
+ShowPlayerForPlayer(playerid, forplayerid, bool: show)
 {
-	if(show)
+	if (show)
 	{
 		SetPlayerMarkerForPlayer(forplayerid, playerid, GetPlayerColor(playerid));
 		ShowPlayerNameTagForPlayer(forplayerid, playerid, 1);

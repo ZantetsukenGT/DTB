@@ -1,16 +1,16 @@
 forward OnPlayerBanLoaded(playerid);
 public OnPlayerBanLoaded(playerid)
 {
-	if(cache_get_row_count(g_DBHandle) > 0)
+	new rows;
+	if (!cache_get_row_count(rows))
+		return 1;
+	if (rows > 0)
 	{
-		new
-			ban_reason[50],
-		    kick_reason[64]
-		;
+		new ban_reason[50], kick_reason[64];
 
-        cache_get_field_content(0, "ban_reason", ban_reason, g_DBHandle);
-		format(kick_reason, sizeof kick_reason, "Previous Ban (%s)", ban_reason);
-		Kick(playerid, kick_reason);
+		cache_get_value(0, "ban_reason", ban_reason);
+		format(kick_reason, sizeof(kick_reason), "Previous Ban (%s)", ban_reason);
+		KickPlayer(playerid, kick_reason);
 	}
-    return 1;
+	return 1;
 }

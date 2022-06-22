@@ -1,17 +1,17 @@
-SetPlayerBombProgressTextdraw(playerid, Float:progress)
+SetPlayerBombProgressTextdraw(playerid, Float: progress)
 {
-	if(progress < 0.0)
-	    progress = 0.0;
-	else if(progress > 1.0)
-	    progress = 1.0;
+	if (progress < 0.0)
+		progress = 0.0;
+	else if (progress > 1.0)
+		progress = 1.0;
 
-	new Float:min_size = 259.0,
-		Float:max_size = 379.0,
-		Float:offset_size = max_size - min_size,
-		Float:final_size = min_size + (progress * offset_size);
+	new Float: min_size	   = 259.0,
+		Float: max_size	   = 379.0,
+		Float: offset_size = max_size - min_size,
+		Float: final_size  = min_size + (progress * offset_size);
 
-	PlayerTextDrawTextSize	(playerid, g_BombProgressValueTD[playerid], final_size, 0.0);
-	PlayerTextDrawShow		(playerid, g_BombProgressValueTD[playerid]);
+	PlayerTextDrawTextSize(playerid, g_BombProgressValueTD[playerid], final_size, 0.0);
+	PlayerTextDrawShow(playerid, g_BombProgressValueTD[playerid]);
 }
 
 ShowPlayerBombProgressTextdraw(playerid)

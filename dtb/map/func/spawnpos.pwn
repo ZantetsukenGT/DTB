@@ -1,6 +1,6 @@
-GetMapSpawnPos(mapid, teamid, &Float:x, &Float:y, &Float:z)
+GetMapSpawnPos(mapid, teamid, &Float: x, &Float: y, &Float: z)
 {
-	switch(teamid)
+	switch (teamid)
 	{
 		case TEAM_ATTACK:
 		{

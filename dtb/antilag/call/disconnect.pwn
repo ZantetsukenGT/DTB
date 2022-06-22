@@ -1,30 +1,19 @@
-public OnPlayerDisconnect(playerid, reason)
+
+#include <YSI_Coding\y_hooks>
+
+hook OnPlayerDisconnect(playerid, reason)
 {
+	g_PingWarnings[playerid]	   = 0;
+	g_FpsWarnings[playerid]		   = 0;
+	g_PacketLossWarnings[playerid] = 0;
+
 	PlayerTextDrawDestroy(playerid, g_AntilagBoxTD[playerid]);
 	PlayerTextDrawDestroy(playerid, g_PingTD[playerid]);
 	PlayerTextDrawDestroy(playerid, g_FramerateTD[playerid]);
 	PlayerTextDrawDestroy(playerid, g_PacketlossTD[playerid]);
 
-	g_PingWarnings			[playerid] = 0;
-	g_FpsWarnings			[playerid] = 0;
-	g_PacketLossWarnings	[playerid] = 0;
-	g_AntilagBoxTD			[playerid] = PlayerText: INVALID_TEXT_DRAW;
-	g_PingTD				[playerid] = PlayerText: INVALID_TEXT_DRAW;
-	g_FramerateTD			[playerid] = PlayerText: INVALID_TEXT_DRAW;
-	g_PacketlossTD			[playerid] = PlayerText: INVALID_TEXT_DRAW;
-
-	#if defined al_OnPlayerDisconnect
-		return al_OnPlayerDisconnect(playerid, reason);
-	#else
-	    return 1;
-	#endif
+	g_AntilagBoxTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
+	g_PingTD[playerid]		 = PlayerText: INVALID_TEXT_DRAW;
+	g_FramerateTD[playerid]	 = PlayerText: INVALID_TEXT_DRAW;
+	g_PacketlossTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
 }
-#if defined _ALS_OnPlayerDisconnect
-	#undef OnPlayerDisconnect
-#else
-	#define _ALS_OnPlayerDisconnect
-#endif
-#define OnPlayerDisconnect al_OnPlayerDisconnect
-#if defined al_OnPlayerDisconnect
-	forward al_OnPlayerDisconnect(playerid, reason);
-#endif

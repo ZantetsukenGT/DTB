@@ -6,16 +6,16 @@ public UpdateBombDefuse()
 	new mapid = g_MapID,
 		bombsiteid = g_BombPlantSite,
 		playerid = g_BombDefuserID,
-		Float:x,
-		Float:y,
-		Float:z;
+		Float: x,
+		Float: y,
+		Float: z;
 
 	GetMapBombsitePos(mapid, bombsiteid, x, y, z);
 
-	if(GetTickCount() - g_BombDefuseTick >= DEFUSE_TIME)
+	if (GetTickCount() - g_BombDefuseTick >= DEFUSE_TIME)
 	{
 		// Set Variables
-		if(g_IsBombBeingDefused)
+		if (g_IsBombBeingDefused)
 		{
 			g_IsBombBeingDefused = false;
 			KillTimer(g_BombDefuseTimer);
@@ -44,11 +44,11 @@ public UpdateBombDefuse()
 		CallLocalFunction("OnBombDefused", "ii", playerid, bombsiteid);
 	}
 	else
-    {
+	{
 		// Textdraw
 		new timepassed = GetTickCount() - g_BombDefuseTick,
-			Float:progress = float(timepassed) / float(DEFUSE_TIME);
-        SetPlayerBombProgressTextdraw(playerid, progress);
+		Float: progress = float(timepassed) / float(DEFUSE_TIME);
+		SetPlayerBombProgressTextdraw(playerid, progress);
 
 		// Beep Sound
 		PlaySoundForAll(21000, x, y, z);
@@ -57,8 +57,8 @@ public UpdateBombDefuse()
 
 StartPlayerDefusingBomb(playerid)
 {
-	if(g_GameState != STATE_STARTED)
-	    return 0;
+	if (g_GameState != STATE_STARTED)
+		return 0;
 
 	// Destroy Bomb
 	DestroyBombObject();
@@ -74,12 +74,12 @@ StartPlayerDefusingBomb(playerid)
 	ShowPlayerBombProgressTextdraw(playerid);
 
 	// Set Variables
-	if(g_IsBombBeingDefused)
+	if (g_IsBombBeingDefused)
 		KillTimer(g_BombDefuseTimer);
 	else
 		g_IsBombBeingDefused = true;
-	g_BombDefuserID = playerid;
-	g_BombDefuseTick = GetTickCount();
+	g_BombDefuserID	  = playerid;
+	g_BombDefuseTick  = GetTickCount();
 	g_BombDefuseTimer = SetTimer("UpdateBombDefuse", 200, true);
 	return 1;
 }
@@ -96,7 +96,7 @@ CancelPlayerDefusingBomb(playerid)
 	CreateBombObject(g_BombPlantSite);
 
 	// Textdraws
-	if(g_PlayerBombsite{playerid} == INVALID_BOMBSITE_ID)
+	if (g_PlayerBombsite { playerid } == INVALID_BOMBSITE_ID)
 		PlayerTextDrawHide(playerid, g_BombTextTD[playerid]);
 	else
 	{
@@ -106,7 +106,7 @@ CancelPlayerDefusingBomb(playerid)
 	HidePlayerBombProgressTextdraw(playerid);
 
 	// Set Variables
-	if(g_IsBombBeingDefused)
+	if (g_IsBombBeingDefused)
 	{
 		KillTimer(g_BombDefuseTimer);
 		g_IsBombBeingDefused = false;

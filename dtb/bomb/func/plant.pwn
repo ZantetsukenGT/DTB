@@ -7,28 +7,28 @@ public UpdateBombPlant()
 		bombsiteid = g_BombPlantSite,
 		oppositesite = GetOppositeBombsite(bombsiteid),
 		playerid = g_BombPlanterID,
-		Float:x,
-		Float:y,
-		Float:z;
+		Float: x,
+		Float: y,
+		Float: z;
 
 	GetMapBombsitePos(mapid, bombsiteid, x, y, z);
 
-	if(GetTickCount() - g_BombPlantTick >= PLANT_TIME)
+	if (GetTickCount() - g_BombPlantTick >= PLANT_TIME)
 	{
 		// Set Variables
-		if(g_IsBombBeingPlanted)
+		if (g_IsBombBeingPlanted)
 		{
 			g_IsBombBeingPlanted = false;
 			KillTimer(g_BombPlantTimer);
 		}
-		g_GameTime = 60;
+		g_GameTime		= 60;
 		g_IsBombPlanted = true;
 
 		// Create Bomb
 		CreateBombObject(bombsiteid);
 
 		// Destroy Other Bombsite
-        DestroyBombsiteIcon(oppositesite);
+		DestroyBombsiteIcon(oppositesite);
 
 		// Animation
 		ApplyAnimation(playerid, "BOMBER", "BOM_PLANT_2IDLE", BOMB_ANIM_SPEED, 0, 0, 0, 0, 0, 1);
@@ -37,7 +37,7 @@ public UpdateBombPlant()
 		UnattachBombFromPlayer(playerid);
 
 		// Beep Sound
-    	PlaySoundForAll(21002, x, y, z);
+		PlaySoundForAll(21002, x, y, z);
 
 		// Textdraw
 		PlayerTextDrawHide(playerid, g_BombTextTD[playerid]);
@@ -46,13 +46,11 @@ public UpdateBombPlant()
 		CallLocalFunction("OnBombPlanted", "ii", playerid, bombsiteid);
 	}
 	else
-    {
-		new
-			timepassed = GetTickCount() - g_BombPlantTick,
-			Float:progress = Float:timepassed / Float:PLANT_TIME
-		;
+	{
+		new timepassed = GetTickCount() - g_BombPlantTick,
+			Float: progress = Float: timepassed / Float: PLANT_TIME;
 
-        SetPlayerBombProgressTextdraw(playerid, progress);
+		SetPlayerBombProgressTextdraw(playerid, progress);
 
 		// Beep Sound
 		PlaySoundForAll(21000, x, y, z);
@@ -61,8 +59,8 @@ public UpdateBombPlant()
 
 StartPlayerPlantingBomb(playerid, bombsiteid)
 {
-	if(g_GameState != STATE_STARTED)
-	    return 0;
+	if (g_GameState != STATE_STARTED)
+		return 0;
 
 	// Animation
 	ApplyAnimation(playerid, "BOMBER", "BOM_PLANT_LOOP", BOMB_ANIM_SPEED, 1, 0, 0, 0, 0, 1);
@@ -75,17 +73,17 @@ StartPlayerPlantingBomb(playerid, bombsiteid)
 	ShowPlayerBombProgressTextdraw(playerid);
 
 	// Kill Timer
-	if(g_IsBombBeingPlanted)
+	if (g_IsBombBeingPlanted)
 		KillTimer(g_BombPlantTimer);
 
 	// Set Variables
-	if(g_IsBombBeingPlanted)
+	if (g_IsBombBeingPlanted)
 		KillTimer(g_BombPlantTimer);
 	else
 		g_IsBombBeingPlanted = true;
-	g_BombPlanterID = playerid;
-	g_BombPlantTick = GetTickCount();
-	g_BombPlantSite = bombsiteid;
+	g_BombPlanterID	 = playerid;
+	g_BombPlantTick	 = GetTickCount();
+	g_BombPlantSite	 = bombsiteid;
 	g_BombPlantTimer = SetTimer("UpdateBombPlant", 200, true);
 	return 1;
 }
@@ -93,7 +91,7 @@ StartPlayerPlantingBomb(playerid, bombsiteid)
 CancelPlayerPlantingBomb(playerid)
 {
 	// Set Variables
-	if(g_IsBombBeingPlanted)
+	if (g_IsBombBeingPlanted)
 	{
 		g_IsBombBeingPlanted = false;
 		KillTimer(g_BombPlantTimer);
@@ -107,7 +105,7 @@ CancelPlayerPlantingBomb(playerid)
 	AttachPlayerBombToBack(playerid);
 
 	// Textdraw
-	if(g_PlayerBombsite{playerid} == INVALID_BOMBSITE_ID)
+	if (g_PlayerBombsite { playerid } == INVALID_BOMBSITE_ID)
 		PlayerTextDrawHide(playerid, g_BombTextTD[playerid]);
 	else
 	{

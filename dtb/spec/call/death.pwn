@@ -1,27 +1,14 @@
-public OnPlayerDeath(playerid, killerid, reason)
+
+#include <YSI_Coding\y_hooks>
+
+hook OnPlayerDeath(playerid, killerid, reason)
 {
-	for(new spectatorid, max_playerid = GetMaxPlayers(); spectatorid < max_playerid; spectatorid ++)
+	foreach (new spectatorid : Player)
 	{
-		if(!IsPlayerConnected(spectatorid))
-		    continue;
+		if (!IsPlayerSpectating(spectatorid))
+			continue;
 
-		if(!IsPlayerSpectating(spectatorid))
-		    continue;
-
-		if(GetPlayerSpectatePlayer(spectatorid) == playerid)
+		if (GetPlayerSpectatePlayer(spectatorid) == playerid)
 			TogglePlayerSpectating(spectatorid, false);
 	}
-
-	#if defined spec_OnPlayerDeath
-		spec_OnPlayerDeath(playerid, killerid, reason);
-	#endif
 }
-#if defined _ALS_OnPlayerDeath
-	#undef OnPlayerDeath
-#else
-	#define _ALS_OnPlayerDeath
-#endif
-#define OnPlayerDeath spec_OnPlayerDeath
-#if defined spec_OnPlayerDeath
-	forward spec_OnPlayerDeath(playerid, killerid, reason);
-#endif

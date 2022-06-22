@@ -1,14 +1,12 @@
-Float:GetPlayerKDRatio(playerid)
+Float: GetPlayerKDRatio(playerid)
 {
-	new
-		kills = g_PlayerKills[playerid],
+	new kills = g_PlayerKills[playerid],
 		deaths = g_PlayerDeaths[playerid],
-		Float:ratio
-	;
+		Float: ratio;
 
-	if(deaths == 0)
-		ratio = Float:kills / 1.0;
+	if (deaths == 0)
+		ratio = Float: kills / 1.0;
 	else
-		ratio = Float:kills / Float:deaths;
+		ratio = Float: kills / Float: deaths;
 	return ratio;
 }

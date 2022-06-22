@@ -1,9 +1,9 @@
 COMMAND:unloadfs(playerid, params[])
 {
-	if(g_PlayerAdminLevel{playerid} < 2)
-	    return 0;
+	if (g_PlayerAdminLevel { playerid } < 2)
+		return 0;
 
-	if(isnull(params))
+	if (isnull(params))
 		return SendClientMessage(playerid, COLOR_RED, "You did not enter any filterscript name!"), 1;
 
 	new rcon_cmd[100];
@@ -11,5 +11,5 @@ COMMAND:unloadfs(playerid, params[])
 
 	SendClientMessage(playerid, COLOR_WHITE, rcon_cmd);
 	SendRconCommand(rcon_cmd);
-    return 1;
+	return 1;
 }

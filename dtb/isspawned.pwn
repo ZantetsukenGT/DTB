@@ -3,7 +3,7 @@
 
 static bool: g_IsPlayerSelectingClass[MAX_PLAYERS char];
 
-IsPlayerSpawned(playerid)
+hook native IsPlayerSpawned(playerid)
 {
 	new player_state = GetPlayerState(playerid);
 	switch (player_state)

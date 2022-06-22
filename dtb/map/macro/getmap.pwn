@@ -1,2 +1,1 @@
-#define GetCurrentMapID \
-	(g_MapID)
+#define GetCurrentMapID (g_MapID)

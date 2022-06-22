@@ -1,6 +1,6 @@
-GetMapBombsitePos(mapid, bombsiteid, &Float:x, &Float:y, &Float:z)
+GetMapBombsitePos(mapid, bombsiteid, &Float: x, &Float: y, &Float: z)
 {
-	switch(bombsiteid)
+	switch (bombsiteid)
 	{
 		case BOMBSITE_A:
 		{

@@ -1,1 +1,1 @@
-new	Text:g_GameTimeTD;
+new Text: g_GameTimeTD;

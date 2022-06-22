@@ -1,9 +1,12 @@
-GetZoneLimits(direction, &Float:minx, &Float:miny, &Float:maxx, &Float:maxy)
+GetZoneLimits(direction, &Float: minx, &Float: miny, &Float: maxx, &Float: maxy)
 {
-	new Float:map_minx, Float:map_miny, Float:map_maxx, Float:map_maxy;
+	new Float: map_minx,
+		Float: map_miny,
+		Float: map_maxx,
+		Float: map_maxy;
 	GetMapLimits(g_MapID, map_minx, map_miny, map_maxx, map_maxy);
 
-	switch(direction)
+	switch (direction)
 	{
 		case ZONE_WEST:
 		{
@@ -33,8 +36,7 @@ GetZoneLimits(direction, &Float:minx, &Float:miny, &Float:maxx, &Float:maxy)
 			maxx = map_maxx;
 			maxy = map_miny;
 		}
-		default:
-		    return 0;
+		default: return 0;
 	}
 	return 1;
 }

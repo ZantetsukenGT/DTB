@@ -1,14 +1,12 @@
-Float:GetPlayerWLRatio(playerid)
+Float: GetPlayerWLRatio(playerid)
 {
-	new
-		wins = g_PlayerGamesWon[playerid],
+	new wins = g_PlayerGamesWon[playerid],
 		losses = g_PlayerGamesLost[playerid],
-		Float:ratio
-	;
+		Float: ratio;
 
-	if(losses == 0)
-		ratio = Float:wins / 1.0;
+	if (losses == 0)
+		ratio = Float: wins / 1.0;
 	else
-		ratio = Float:wins / Float:losses;
+		ratio = Float: wins / Float: losses;
 	return ratio;
 }

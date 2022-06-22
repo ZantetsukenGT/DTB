@@ -1,29 +1,27 @@
 ac_CheckPlayerArmour(playerid)
 {
-	if(IsPlayerSpawned(playerid))
+	if (IsPlayerSpawned(playerid))
 	{
-		new Float:client_armour,
-		    Float:ac_armour;
+		new Float: client_armour,
+			Float: ac_armour;
 
 		GetPlayerArmour(playerid, client_armour);
 		ac_GetPlayerArmour(playerid, ac_armour);
 
-		if(client_armour > ac_armour)
+		if (client_armour > ac_armour)
 		{
-			if(g_acArmourWarnings{playerid} >= MAX_AC_ARMOUR_WARNINGS || client_armour > 100.0)
+			if (g_acArmourWarnings { playerid } >= MAX_AC_ARMOUR_WARNINGS || client_armour > 100.0)
 			{
 				new reason[40];
-				format(reason, sizeof reason,
-					"Armour Hacks (%.2f)", client_armour
-				);
-				Ban(playerid, reason);
+				format(reason, sizeof(reason), "Armour Hacks (%.2f)", client_armour);
+				BanPlayer(playerid, reason);
 			}
 			else
-				g_acArmourWarnings{playerid} ++;
+				g_acArmourWarnings { playerid }++;
 		}
 		else
-			g_acArmourWarnings{playerid} = 0;
+			g_acArmourWarnings { playerid } = 0;
 	}
 	else
-		g_acArmourWarnings{playerid} = 0;
+		g_acArmourWarnings { playerid } = 0;
 }

@@ -1,44 +1,35 @@
 COMMAND:report(playerid, params[])
 {
-	new id,
-	    reason[50];
+	new id, reason[50];
 
-	if(sscanf(params, "rs[*]", id, sizeof(reason), reason))
-	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Report <playerid/name> <reason>"), 1;
+	if (sscanf(params, "rs[*]", id, sizeof(reason), reason))
+		return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Report <playerid/name> <reason>"), 1;
 
-	if(id == INVALID_PLAYER_ID)
+	if (id == INVALID_PLAYER_ID)
 		return SendClientMessage(playerid, COLOR_RED, "This player is not connected!"), 1;
 
-	if(id == playerid)
+	if (id == playerid)
 		return SendClientMessage(playerid, COLOR_RED, "You cannot use this on yourself!"), 1;
 
-	new
-		send_string		[100],
-		admin_string	[100]
-	;
+	new send_string[144], admin_string[144];
 
-	format(send_string, sizeof send_string, "You have reported %s (ID: %i), reason: %s.",
-	    g_PlayerName[id], id, reason
-	);
+	format(send_string, sizeof(send_string), "You have reported %s (ID: %i), reason: %s.", g_PlayerName[id], id, reason);
 	SendClientMessage(playerid, COLOR_ORANGE, send_string);
 
-	format(admin_string, sizeof admin_string, "%s (ID: %i) has reported %s (ID: %i), reason: %s.",
-		g_PlayerName[playerid], playerid, g_PlayerName[id], id, reason
-	);
+	format(
+		admin_string, sizeof(admin_string), "%s (ID: %i) has reported %s (ID: %i), reason: %s.", g_PlayerName[playerid], playerid,
+		g_PlayerName[id], id, reason);
 
-	for(new loop_playerid, max_playerid = GetMaxPlayers(); loop_playerid < max_playerid; loop_playerid ++)
+	foreach (new loop_playerid : Player)
 	{
-		if(!IsPlayerConnected(loop_playerid))
+		if (loop_playerid == playerid)
 			continue;
 
-		if(loop_playerid == playerid)
+		if (loop_playerid == id)
 			continue;
 
-		if(loop_playerid == id)
-			continue;
-
-		if(g_PlayerAdminLevel{loop_playerid} > 0)
+		if (g_PlayerAdminLevel { loop_playerid } > 0)
 			SendClientMessage(loop_playerid, COLOR_ORANGE, admin_string);
 	}
-    return 1;
+	return 1;
 }

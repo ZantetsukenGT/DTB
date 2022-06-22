@@ -6,7 +6,7 @@ hook OnRconLoginAttempt(ip[], password[], success)
 	{
 		if (IsPlayerAdmin(i))
 		{
-			Kick(i, "RCON Login Attempt");
+			KickPlayer(i, "RCON Login Attempt");
 		}
 	}
 }

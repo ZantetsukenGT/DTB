@@ -1,4 +1,7 @@
-public OnGameModeInit()
+
+#include <YSI_Coding\y_hooks>
+
+hook OnGameModeInit()
 {
 	CreateVehicle(476, 291.13, 2535.58, 18.37, 180.29, 103, 102, -1); // Rustler
 	CreateVehicle(476, 324.43, 2535.65, 18.51, 181.87, 77, 87, -1); // Rustler
@@ -1771,17 +1774,4 @@ public OnGameModeInit()
 	CreateVehicle(473, -2417.89, -944.81, 0.84, 61.31, 56, 15, -1); // Dinghy
 	CreateVehicle(470, -2217.03, -2407.24, 31.83, 232.11, 43, 0, -1); // Patriot
 	CreateVehicle(468, -2508.10, -1892.62, 297.11, 25.01, 6, 6, -1); // Sanchez
-
-	#if defined veh_OnGameModeInit
-		veh_OnGameModeInit();
-	#endif
 }
-#if defined _ALS_OnGameModeInit
-	#undef OnGameModeInit
-#else
-	#define _ALS_OnGameModeInit
-#endif
-#define OnGameModeInit veh_OnGameModeInit
-#if defined veh_OnGameModeInit
-	forward veh_OnGameModeInit();
-#endif

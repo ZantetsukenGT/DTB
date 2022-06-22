@@ -1,34 +1,28 @@
 COMMAND:getid(playerid, params[])
 {
-	if(isnull(params))
-	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Getid <part of name>"), 1;
+	new ids[MAX_PLAYERS];
+	if (sscanf(params, "?<MATCH_NAME_PARTIAL=1>r[*]", sizeof(ids), ids))
+		return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Getid <part of name>"), 1;
 
-	new players_found,
-	    player_array[MAX_PLAYERS];
+	if (ids[MAX_PLAYERS - 1] == cellmin)
+		return SendClientMessage(playerid, COLOR_RED, "Too many matches!"), 1;
 
-	for(new id, max_playerid = GetMaxPlayers(); id < max_playerid; id ++)
+	new players_found = 0;
+	for (; ids[players_found] != INVALID_PLAYER_ID; ++players_found) {}
+	if (players_found == 0)
+		return SendClientMessage(playerid, COLOR_RED, "No players were found with a similar name!"), 1;
+	else
 	{
-		if(!IsPlayerConnected(id))
-		    continue;
+		new msg[128];
+		format(msg, sizeof(msg), "%i player(s) were found with a similar name:", players_found);
+		SendClientMessage(playerid, COLOR_GREEN, msg);
 
-		if(strfind(g_PlayerName[id], params, true) == -1)
-			continue;
-
-        player_array[players_found ++] = id;
-	}
-
-	if(players_found == 0)
-	    return SendClientMessage(playerid, COLOR_RED, "No players were found with a similar name!"), 1;
-
-	new msg[128];
-	format(msg, sizeof msg, "%i player(s) were found with a similar name:", players_found);
-	SendClientMessage(playerid, COLOR_GREEN, msg);
-
-	for(new index; index < players_found; index ++)
-	{
-		new id = player_array[index];
-		format(msg, sizeof msg, "%s (ID: %i)", g_PlayerName[id], id);
-		SendClientMessage(playerid, COLOR_WHITE, msg);
+		for (new index; index < players_found; index++)
+		{
+			new id = ids[index];
+			format(msg, sizeof(msg), "%s (ID: %i)", g_PlayerName[id], id);
+			SendClientMessage(playerid, COLOR_WHITE, msg);
+		}
 	}
 	return 1;
 }

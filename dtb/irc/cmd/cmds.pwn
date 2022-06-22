@@ -1,6 +1,6 @@
-IRCCMD:cmds(botid, channel[], user[], host[], params[])
+IRCCMD:cmds(botid, const channel[], const user[], const host[], const params[])
 {
-	if(botid == g_IRCBotID[0])
+	if (botid == g_IRCBotID[0])
 	{
 		IRC_GroupSay(g_IRCGroupID, IRC_CHANNEL, "List of available channel commands:");
 		IRC_GroupSay(g_IRCGroupID, IRC_CHANNEL, "Everyone: !Players");

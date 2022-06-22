@@ -1,6 +1,6 @@
-GetMapBombsiteRot(mapid, bombsiteid, &Float:rx, &Float:ry, &Float:rz)
+GetMapBombsiteRot(mapid, bombsiteid, &Float: rx, &Float: ry, &Float: rz)
 {
-	switch(bombsiteid)
+	switch (bombsiteid)
 	{
 		case BOMBSITE_A:
 		{

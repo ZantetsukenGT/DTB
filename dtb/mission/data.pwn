@@ -1,6 +1,4 @@
-new
-	bool: g_IsObjectiveShown,
-	g_ObjectiveShownTime,
-	g_ObjectiveBombsite,
-	Text: g_ObjectiveTD[2]
-;
+new bool: g_IsObjectiveShown;
+new g_ObjectiveShownTime;
+new g_ObjectiveBombsite;
+new Text: g_ObjectiveTD[2];

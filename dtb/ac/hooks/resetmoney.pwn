@@ -1,11 +1,8 @@
-stock ac_ResetPlayerMoney(playerid)
+
+#include <YSI_Coding\y_hooks>
+
+hook native ResetPlayerMoney(playerid)
 {
 	g_acMoney[playerid] = 0;
-	ResetPlayerMoney(playerid);
+	continue(playerid);
 }
-#if defined _ALS_ResetPlayerMoney
-	#undef ResetPlayerMoney
-#else
-	#define _ALS_ResetPlayerMoney
-#endif
-#define ResetPlayerMoney ac_ResetPlayerMoney

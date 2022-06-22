@@ -1,17 +1,18 @@
-public OnPlayerSpawn(playerid)
+
+#include <YSI_Coding\y_hooks>
+
+hook OnPlayerSpawn(playerid)
 {
 	new teamid = g_PlayerTeam[playerid];
-	switch(teamid)
+	switch (teamid)
 	{
-	    case TEAM_ATTACK, TEAM_DEFEND:
-	    {
-			new
-				mapid = g_MapID,
-				Float:x,
-				Float:y,
-				Float:z,
-				Float:angle
-			;
+		case TEAM_ATTACK, TEAM_DEFEND:
+		{
+			new mapid = g_MapID,
+				Float: x,
+				Float: y,
+				Float: z,
+				Float: angle;
 
 			GetMapSpawnPos(mapid, teamid, x, y, z);
 			GetMapSpawnAngle(mapid, teamid, angle);
@@ -23,19 +24,4 @@ public OnPlayerSpawn(playerid)
 			SetPlayerInterior(playerid, GetMapInterior(mapid));
 		}
 	}
-
-	#if defined map_OnPlayerSpawn
-		return map_OnPlayerSpawn(playerid);
-	#else
-	    return 1;
-	#endif
 }
-#if defined _ALS_OnPlayerSpawn
-	#undef OnPlayerSpawn
-#else
-	#define _ALS_OnPlayerSpawn
-#endif
-#define OnPlayerSpawn map_OnPlayerSpawn
-#if defined map_OnPlayerSpawn
-	forward map_OnPlayerSpawn(playerid);
-#endif

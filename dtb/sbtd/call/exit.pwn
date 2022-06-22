@@ -1,15 +1,17 @@
-public OnGameModeExit()
-{
-	for(new column; column < 4; column ++)
-		TextDrawDestroy(g_ScoreboardColumnTD[column]);
 
-	for(new teamid; teamid < 2; teamid ++)
+#include <YSI_Coding\y_hooks>
+
+hook OnGameModeExit()
+{
+	for (new column; column < 4; column++) TextDrawDestroy(g_ScoreboardColumnTD[column]);
+
+	for (new teamid; teamid < 2; teamid++)
 	{
 		TextDrawDestroy(g_ScoreboardBoxTD[teamid]);
 		TextDrawDestroy(g_ScoreboardRowTD[teamid]);
 		TextDrawDestroy(g_ScoreboardTeamTD[teamid]);
 
-		for(new slot; slot < MAX_TEAM_PLAYERS; slot ++)
+		foreach (new slot : Player)
 		{
 			TextDrawDestroy(g_ScoreboardPlayerTD[teamid][slot]);
 			TextDrawDestroy(g_ScoreboardBombTD[teamid][slot]);
@@ -19,17 +21,4 @@ public OnGameModeExit()
 			TextDrawDestroy(g_ScoreboardAccuracyTD[teamid][slot]);
 		}
 	}
-
-	#if defined sb_OnGameModeExit
-		sb_OnGameModeExit();
-	#endif
 }
-#if defined _ALS_OnGameModeExit
-	#undef OnGameModeExit
-#else
-	#define _ALS_OnGameModeExit
-#endif
-#define OnGameModeExit sb_OnGameModeExit
-#if defined sb_OnGameModeExit
-	forward sb_OnGameModeExit();
-#endif

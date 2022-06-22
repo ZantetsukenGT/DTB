@@ -1,13 +1,13 @@
-Float:GetPlayerDistanceToSite(playerid, bombsiteid)
+Float: GetPlayerDistanceToSite(playerid, bombsiteid)
 {
 	new mapid = g_MapID,
-		Float:x,
-		Float:y,
-		Float:z,
-		Float:rx,
-		Float:ry,
-		Float:rz,
-		Float:distance;
+		Float: x,
+		Float: y,
+		Float: z,
+		Float: rx,
+		Float: ry,
+		Float: rz,
+		Float: distance;
 
 	GetMapBombsitePos(mapid, bombsiteid, x, y, z);
 	GetMapBombsiteRot(mapid, bombsiteid, rx, ry, rz);
@@ -19,10 +19,10 @@ Float:GetPlayerDistanceToSite(playerid, bombsiteid)
 
 GetPlayerBombsite(playerid)
 {
-	for(new bombsiteid; bombsiteid < 2; bombsiteid ++)
+	for (new bombsiteid; bombsiteid < 2; bombsiteid++)
 	{
-		if(g_IsBombsiteCreated{bombsiteid} && GetPlayerDistanceToSite(playerid, bombsiteid) < 1.5)
-		    return bombsiteid;
+		if (g_IsBombsiteCreated { bombsiteid } && GetPlayerDistanceToSite(playerid, bombsiteid) < 1.5)
+			return bombsiteid;
 	}
 	return INVALID_BOMBSITE_ID;
 }

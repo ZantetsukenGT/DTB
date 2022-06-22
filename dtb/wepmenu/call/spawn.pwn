@@ -1,26 +1,15 @@
-public OnPlayerSpawn(playerid)
+
+#include <YSI_Coding\y_hooks>
+
+hook OnPlayerSpawn(playerid)
 {
-	switch(g_PlayerTeam[playerid])
+	switch (g_PlayerTeam[playerid])
 	{
-	    case TEAM_ATTACK, TEAM_DEFEND:
-	    {
+		case TEAM_ATTACK, TEAM_DEFEND:
+		{
+			SendClientMessage(playerid, COLOR_GREEN, "Showing Menu");
 			ShowPlayerWeaponMenu(playerid, 0);
-		    SelectTextDraw(playerid, COLOR_RED);
+			SelectTextDraw(playerid, COLOR_RED);
 		}
 	}
-
-	#if defined wm_OnPlayerSpawn
-		return wm_OnPlayerSpawn(playerid);
-	#else
-	    return 1;
-	#endif
 }
-#if defined _ALS_OnPlayerSpawn
-	#undef OnPlayerSpawn
-#else
-	#define _ALS_OnPlayerSpawn
-#endif
-#define OnPlayerSpawn wm_OnPlayerSpawn
-#if defined wm_OnPlayerSpawn
-	forward wm_OnPlayerSpawn(playerid);
-#endif

@@ -1,18 +1,7 @@
-public OnPlayerSpectatePlayer(playerid, targetplayerid, mode)
-{
-	if(IsPlayerStreamedIn(targetplayerid, playerid))
-		ShowPlayerForPlayer(targetplayerid, playerid, true);
+#include <YSI_Coding\y_hooks>
 
-	#if defined pshow_OnPlayerSpectatePlayer
-		pshow_OnPlayerSpectatePlayer(playerid, targetplayerid, mode);
-	#endif
+hook OnPlayerSpectatePlayer(playerid, targetplayerid, mode)
+{
+	if (IsPlayerStreamedIn(targetplayerid, playerid))
+		ShowPlayerForPlayer(targetplayerid, playerid, true);
 }
-#if defined _ALS_OnPlayerSpectatePlayer
-	#undef OnPlayerSpectatePlayer
-#else
-	#define _ALS_OnPlayerSpectatePlayer
-#endif
-#define OnPlayerSpectatePlayer pshow_OnPlayerSpectatePlayer
-#if defined pshow_OnPlayerSpectatePlayer
-	forward pshow_OnPlayerSpectatePlayer(playerid, targetplayerid, mode);
-#endif

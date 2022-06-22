@@ -1,25 +1,15 @@
-#define COUNTDOWN_TIME \
-	(10)
+#define COUNTDOWN_TIME	  (10)
+#define MISSION_TIME	  (3 * 60)
+#define INTERMISSION_TIME (15)
 
-#define MISSION_TIME \
-	(3*60)
-
-#define INTERMISSION_TIME \
-	(15)
-
-new
-	g_GameTime,
-	g_GameState,
-	g_GameTimer,
-	g_GameWinner
-;
+new g_GameTime, g_GameState, g_GameTimer, g_GameWinner;
 
 enum
 {
 	STATE_COUNTDOWN,
 	STATE_STARTED,
 	STATE_FINISHED
-}
+};
 
 enum
 {
@@ -31,7 +21,7 @@ enum
 	REASON_DEFEND_DISCONNECT,
 	REASON_NO_PLANT,
 	REASON_CANCELLED
-}
+};
 
 forward OnSecondPassed();
 forward OnGameStart();
