@@ -513,4 +513,4 @@ hook OnPlayerUpdate(playerid)
 {
 	// Only send player updates if the player is not frozen
 	return 1;//IsPlayerControllable(playerid);
-// }
+}
