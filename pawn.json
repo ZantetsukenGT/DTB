@@ -61,7 +61,8 @@
 				"-(+",
 				"-\\+",
 				"-d2",
-				"-O1"
+				"-O1",
+				"-Z+"
 			],
 			"includes": [
 				"legacy-includes"
@@ -75,7 +76,8 @@
 				"-(+",
 				"-\\+",
 				"-d3",
-				"-O0"
+				"-O0",
+				"-Z+"
 			],
 			"includes": [
 				"legacy-includes"
@@ -89,7 +91,8 @@
 				"-(+",
 				"-\\+",
 				"-d0",
-				"-O1"
+				"-O1",
+				"-Z+"
 			],
 			"includes": [
 				"legacy-includes"
