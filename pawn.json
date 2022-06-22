@@ -18,9 +18,9 @@
 	"runtime": {
 		"version": "0.3.7",
 		"mode": "server",
-		"rcon_password": "changemea",
+		"rcon_password": "changeme",
 		"port": 8888,
-		"hostname": "open attack and defend",
+		"hostname": "defend the bombsite",
 		"maxplayers": 50,
 		"language": "",
 		"mapname": "San Andreas",
