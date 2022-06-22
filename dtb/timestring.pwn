@@ -1,23 +1,14 @@
 TimeToString(seconds)
 {
-	new minutes,
-		hours,
-		string[30];
+	new hours = seconds / 3600;
+	seconds = seconds % 3600; 
+	new minutes = seconds / 60;
+	seconds = seconds % 60;
 
-	while(seconds >= 60)
-	{
-		minutes ++;
-		seconds -= 60;
-	}
-	while(minutes >= 60)
-	{
-		hours ++;
-		minutes -= 60;
-	}
-
-	if(hours > 0)
+	new string[30];
+	if (hours > 0)
 		format(string, sizeof(string), "%i H, %i M, %i S", hours, minutes, seconds);
-	else if(minutes > 0)
+	else if (minutes > 0)
 		format(string, sizeof(string), "%i M, %i S", minutes, seconds);
 	else
 		format(string, sizeof(string), "%i S", seconds);

@@ -8,7 +8,7 @@ public OnPlayerUpdate(playerid)
 	{
 		new
 			ping = GetPlayerPing(playerid),
-			Float:packetloss = GetPlayerPacketloss(playerid),
+			Float:packetloss = NetStats_PacketLossPercent(playerid),
 			fps	= GetPlayerFramerate(playerid),
 			ping_string[10],
 			pl_string[19]

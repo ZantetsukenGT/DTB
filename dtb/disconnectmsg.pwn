@@ -1,25 +1,20 @@
-public OnPlayerDisconnect(playerid, reason)
+
+#include <YSI_Coding\y_hooks>
+
+hook OnPlayerDisconnect(playerid, reason)
 {
-	switch(reason)
+	switch (reason)
 	{
-	    case 0:
+		case 0:
 		{
 			new message[128];
-			format(message, sizeof message,
-				"<< %s (ID: %i) disconnected (Timed Out).",
-				g_PlayerName[playerid],
-				playerid
-			);
+			format(message, sizeof(message), "<< %s (ID: %i) disconnected (Timed Out).", g_PlayerName[playerid], playerid);
 			SendClientMessageToAll(COLOR_GREY, message);
 		}
-	    case 1:
+		case 1:
 		{
 			new message[128];
-			format(message, sizeof message,
-				"<< %s (ID: %i) disconnected (Quit).",
-				g_PlayerName[playerid],
-				playerid
-			);
+			format(message, sizeof(message), "<< %s (ID: %i) disconnected (Quit).", g_PlayerName[playerid], playerid);
 			SendClientMessageToAll(COLOR_GREY, message);
 		}
 	}
@@ -27,19 +22,4 @@ public OnPlayerDisconnect(playerid, reason)
 	// Death Message
 	SetPlayerColor(playerid, COLOR_WHITE);
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 201);
-
-	#if defined dcmsg_OnPlayerDisconnect
-		return dcmsg_OnPlayerDisconnect(playerid, reason);
-	#else
-	    return 1;
-	#endif
 }
-#if defined _ALS_OnPlayerDisconnect
-	#undef OnPlayerDisconnect
-#else
-	#define _ALS_OnPlayerDisconnect
-#endif
-#define OnPlayerDisconnect dcmsg_OnPlayerDisconnect
-#if defined dcmsg_OnPlayerDisconnect
-	forward dcmsg_OnPlayerDisconnect(playerid, reason);
-#endif

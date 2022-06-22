@@ -1,25 +1,10 @@
-new g_PlayerJoinTime[MAX_PLAYERS];
 
-#define GetPlayerJoinTime(%0) \
-	(g_PlayerJoinTime[%0])
+#include <YSI_Coding\y_hooks>
 
-#define GetPlayerSessionTime(%0) \
-	(gettime() - g_PlayerJoinTime[%0])
+static g_PlayerJoinTime[MAX_PLAYERS];
 
-public OnPlayerConnect(playerid)
-{
-    g_PlayerJoinTime[playerid] = gettime();
+stock GetPlayerJoinTime(playerid) { return g_PlayerJoinTime[playerid]; }
 
-	#if defined stime_OnPlayerConnect
-		stime_OnPlayerConnect(playerid);
-	#endif
-}
-#if defined _ALS_OnPlayerConnect
-	#undef OnPlayerConnect
-#else
-	#define _ALS_OnPlayerConnect
-#endif
-#define OnPlayerConnect stime_OnPlayerConnect
-#if defined stime_OnPlayerConnect
-	forward stime_OnPlayerConnect(playerid);
-#endif
+stock GetPlayerSessionTime(playerid) { return gettime() - g_PlayerJoinTime[playerid]; }
+
+hook OnPlayerConnect(playerid) { g_PlayerJoinTime[playerid] = gettime(); }
