@@ -4,10 +4,10 @@ COMMAND:kick(playerid, params[])
 	    return 0;
 
 	new id, reason[50];
-	if(sscanf(params, "iS(None)[50]", id, reason))
-	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Kick <playerid> <reason>"), 1;
+	if(sscanf(params, "rS(None)[*]", id, sizeof(reason), reason))
+	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Kick <playerid/name> <reason>"), 1;
 
-	if(!IsPlayerConnected(id))
+	if(id == INVALID_PLAYER_ID)
 		return SendClientMessage(playerid, COLOR_RED, "This player is not connected!"), 1;
 
 	if(playerid == id)

@@ -6,10 +6,10 @@ COMMAND:setadmin(playerid, params[])
 	new id,
 	    level;
 
-	if(sscanf(params, "ii", id, level))
-	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Setadmin <playerid> <level>"), 1;
+	if(sscanf(params, "ri", id, level))
+	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Setadmin <playerid/name> <level>"), 1;
 
-	if(!IsPlayerConnected(id))
+	if(id == INVALID_PLAYER_ID)
 	    return SendClientMessage(playerid, COLOR_RED, "This player is not connected!"), 1;
 
 	if(id == playerid)

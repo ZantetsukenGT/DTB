@@ -3,10 +3,10 @@ COMMAND:pm(playerid, params[])
 	new id,
 	    message[100];
 
-	if(sscanf(params, "is[100]", id, message))
-	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Pm <playerid> <message>"), 1;
+	if(sscanf(params, "rs[*]", id, sizeof(message), message))
+	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Pm <playerid/name> <message>"), 1;
 
-	if(!IsPlayerConnected(id))
+	if(id == INVALID_PLAYER_ID)
 		return SendClientMessage(playerid, COLOR_RED, "This player is not connected!"), 1;
 
 	if(id == playerid)

@@ -6,10 +6,10 @@ IRCCMD:ban(botid, channel[], user[], host[], params[])
 			return IRC_GroupSay(g_IRCGroupID, IRC_CHANNEL, "4,1ERROR: You are not authorized to use this command!"), 1;
 
 		new playerid, reason[50];
-		if(sscanf(params, "iS(None)[50]", playerid, reason))
-	    	return IRC_GroupSay(g_IRCGroupID, IRC_CHANNEL, "4,1SYNTAX: !Ban <playerid> <reason>"), 1;
+		if(sscanf(params, "rS(None)[*]", playerid, sizeof(reason), reason))
+	    	return IRC_GroupSay(g_IRCGroupID, IRC_CHANNEL, "4,1SYNTAX: !Ban <playerid/name> <reason>"), 1;
 
-		if(!IsPlayerConnected(playerid))
+		if(id == INVALID_PLAYER_ID)
 			return IRC_GroupSay(g_IRCGroupID, IRC_CHANNEL, "4,1ERROR: This player is not connected!"), 1;
 
 		Ban(playerid, reason, INVALID_PLAYER_ID, user);

@@ -4,10 +4,10 @@ COMMAND:goto(playerid, params[])
 	    return 0;
 
 	new id;
-	if(sscanf(params, "i", id))
-	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Goto <playerid>"), 1;
+	if(sscanf(params, "r", id))
+	    return SendClientMessage(playerid, COLOR_RED, "SYNTAX: /Goto <playerid/name>"), 1;
 
-	if(!IsPlayerConnected(id))
+	if(id == INVALID_PLAYER_ID)
 		return SendClientMessage(playerid, COLOR_RED, "This player is not connected!"), 1;
 
 	if(id == playerid)
