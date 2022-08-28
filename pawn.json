@@ -5,12 +5,13 @@
 	"output": "gamemodes/dtb.amx",
 	"dependencies": [
 		"Zeex/samp-plugin-crashdetect",
+		"katursis/Pawn.RakNet@omp",
 		"pawn-lang/samp-stdlib",
 		"pawn-lang/YSI-Includes@5.x",
 		"Southclaws/samp-whirlpool",
 		"Southclaws/zcmd",
 		"Y-Less/sscanf",
-		"ZantetsukenGT/samp-weapon-config@omp",
+		"oscar-broman/samp-weapon-config",
 		"ZantetsukenGT/SA-MP-MySQL"
 	],
 	"local": true,
