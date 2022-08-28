@@ -11,5 +11,3 @@ new PlayerText: g_PlayerLevelTextTD[MAX_PLAYERS]  = { PlayerText: INVALID_TEXT_D
 new PlayerText: g_PlayerXPTextTD[MAX_PLAYERS]	  = { PlayerText: INVALID_TEXT_DRAW, ... };
 
 #define GetLevelXP(%0) ((%0 * 10) + 10)
-
-forward OnPlayerXPReceived(playerid, xp, const reason[]);

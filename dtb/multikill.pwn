@@ -1,8 +1,6 @@
 
 #include <YSI_Coding\y_hooks>
 
-forward OnPlayerMultiKill(playerid, kills);
-
 static last_kill_time[MAX_PLAYERS];
 static stacked_kills[MAX_PLAYERS];
 

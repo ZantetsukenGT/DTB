@@ -1,7 +1,5 @@
-forward OnBombDefused(playerid, bombsiteid);
 
-forward UpdateBombDefuse();
-public UpdateBombDefuse()
+hook UpdateBombDefuse()
 {
 	new mapid = g_MapID,
 		bombsiteid = g_BombPlantSite,

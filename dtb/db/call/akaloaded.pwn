@@ -1,5 +1,4 @@
-forward OnPlayerAKALoaded(playerid, forplayerid);
-public OnPlayerAKALoaded(playerid, forplayerid)
+hook OnPlayerAKALoaded(playerid, forplayerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))

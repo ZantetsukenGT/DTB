@@ -1,5 +1,4 @@
-forward OnPlayerAccountRegistered(playerid);
-public OnPlayerAccountRegistered(playerid)
+hook OnPlayerAccRegistered(playerid)
 {
 	g_IsPlayerRegistered { playerid } = true;
 	g_IsPlayerLoggedIn { playerid }	  = true;

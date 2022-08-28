@@ -1,5 +1,4 @@
-forward OnPlayerBanLoaded(playerid);
-public OnPlayerBanLoaded(playerid)
+hook OnPlayerBanLoaded(playerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))

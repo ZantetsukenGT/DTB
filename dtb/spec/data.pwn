@@ -3,8 +3,6 @@
 
 static g_PlayerSpectating[MAX_PLAYERS] = { INVALID_PLAYER_ID, ... };
 
-forward OnPlayerSpectatePlayer(playerid, targetplayerid, mode);
-
 stock GetPlayerSpectatePlayer(playerid) { return g_PlayerSpectating[playerid]; }
 stock bool: IsPlayerSpectating(playerid) { return GetPlayerState(playerid) == PLAYER_STATE_SPECTATING; }
 

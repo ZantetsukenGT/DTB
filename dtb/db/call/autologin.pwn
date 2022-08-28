@@ -1,5 +1,4 @@
-forward OnPlayerAutoLogin(playerid);
-public OnPlayerAutoLogin(playerid)
+hook OnPlayerAutoLogin(playerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))

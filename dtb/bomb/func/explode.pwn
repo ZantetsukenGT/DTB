@@ -1,5 +1,4 @@
-forward ExplodeBombsite();
-public ExplodeBombsite()
+hook ExplodeBombsite()
 {
 	new mapid = g_MapID,
 		bombsiteid = g_BombPlantSite,

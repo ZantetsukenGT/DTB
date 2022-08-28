@@ -1,7 +1,4 @@
-forward OnBombPlanted(playerid, bombsiteid);
-
-forward UpdateBombPlant();
-public UpdateBombPlant()
+hook UpdateBombPlant()
 {
 	new mapid = g_MapID,
 		bombsiteid = g_BombPlantSite,

@@ -1,5 +1,4 @@
-forward OnPlayerAccountLoaded(playerid);
-public OnPlayerAccountLoaded(playerid)
+hook OnPlayerAccountLoaded(playerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))

@@ -1,5 +1,4 @@
-forward OnLeaderboardLoaded(playerid, dialogid);
-public OnLeaderboardLoaded(playerid, dialogid)
+hook OnLeaderboardLoaded(playerid, dialogid)
 {
 	switch (dialogid)
 	{

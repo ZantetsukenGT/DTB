@@ -22,7 +22,3 @@ enum
 	REASON_NO_PLANT,
 	REASON_CANCELLED
 };
-
-forward OnSecondPassed();
-forward OnGameStart();
-forward OnGameEnd(reason);
