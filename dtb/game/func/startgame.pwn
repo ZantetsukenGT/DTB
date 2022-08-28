@@ -6,6 +6,6 @@ StartGame()
 	g_GameTime	= COUNTDOWN_TIME;
 	g_GameState = STATE_COUNTDOWN;
 
-	CallLocalFunction("OnGameStart", "");
+	OnGameStart();
 	return 1;
 }
