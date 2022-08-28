@@ -10,5 +10,5 @@ RegisterPlayerAccount(playerid, accountid, const password[])
 		g_DBHandle, query, sizeof(query),
 		"UPDATE accounts SET account_registered = 1, account_register_date = NOW(), account_password = '%e', account_salt = '%e' WHERE account_id = %i",
 		g_PlayerPassword[playerid], g_PlayerSalt[playerid], accountid);
-	mysql_tquery(g_DBHandle, query, "OnPlayerAccountRegistered", "i", playerid);
+	mysql_tquery(g_DBHandle, query, "OnPlayerAccRegistered", "i", playerid);
 }
