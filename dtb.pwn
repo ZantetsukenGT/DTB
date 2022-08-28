@@ -3,21 +3,22 @@
 #define MAX_PLAYERS 50
 
 #include <a_samp>
-#include <YSI_Data\y_iterate>
-#define WC_CUSTOM_VENDING_MACHINES false
 #include <omp>
-#include <Pawn.RakNet>
-//#include <weapon-config>
-#include <a_mysql>
-#include <geolocation>
-//#include <irc>
 #include <whirlpool>
+#include <a_mysql>
+#include <Pawn.RakNet>		   // Allows you to capture and analyze RakNet traffic
+
+#include <YSI_Data\y_iterate>
+#include <YSI_Coding\y_va>
+#define WC_CUSTOM_VENDING_MACHINES false
+//#include <weapon-config>
+#include <sscanf2>
 #include <zcmd>
+#include <geolocation>
 
 /******************************************************************************/
 
 #include "dtb/weaponmodels.pwn" // weapon models
-#include "dtb/weaponslots.pwn"	// weapon slots
 #include "dtb/soundforall.pwn"	// play sound for all function
 #include "dtb/preloadanim.pwn"	// preload animations
 #include "dtb/dialogs.pwn"		// dialog enum
@@ -61,7 +62,6 @@
 #include "dtb/level/data.pwn"	// xp & levels
 #include "dtb/kickban/data.pwn" // kick & ban stuff
 #include "dtb/db/data.pwn"		// database stuff
-//#include "dtb/irc/data.pwn"		// IRC Echo
 
 // macros
 #include "dtb/map/macro/interior.pwn"
@@ -176,7 +176,6 @@
 #include "dtb/sbtd/call/init.pwn"
 #include "dtb/mission/call/init.pwn"
 #include "dtb/game/call/init.pwn"
-//#include "dtb/irc/call/init.pwn"
 #include "dtb/veh/call/init.pwn"
 
 // OnGameModeExit
@@ -187,7 +186,6 @@
 #include "dtb/sbtd/call/exit.pwn"
 #include "dtb/mission/call/exit.pwn"
 #include "dtb/game/call/exit.pwn"
-//#include "dtb/irc/call/exit.pwn"
 
 // OnSecondPassed
 #include "dtb/rdata/call/secpass.pwn"
@@ -206,7 +204,6 @@
 #include "dtb/bomb/call/gamestart.pwn"
 #include "dtb/warzone/call/gamestart.pwn"
 #include "dtb/game/call/gamestart.pwn"
-//#include "dtb/irc/call/gamestart.pwn"
 
 // OnGameEnd
 #include "dtb/map/call/gameend.pwn"
@@ -218,17 +215,14 @@
 #include "dtb/mission/call/gameend.pwn"
 #include "dtb/game/call/gameend.pwn"
 #include "dtb/level/call/gameend.pwn"
-//#include "dtb/irc/call/gameend.pwn"
 #include "dtb/db/call/gameend.pwn"
 
 // OnBombPlanted
 #include "dtb/level/call/plant.pwn"
 #include "dtb/mission/call/plant.pwn"
-//#include "dtb/irc/call/plant.pwn"
 #include "dtb/db/call/plant.pwn"
 
 // OnBombDefused
-//#include "dtb/irc/call/defuse.pwn"
 #include "dtb/level/call/defuse.pwn"
 #include "dtb/db/call/defuse.pwn"
 
@@ -242,7 +236,6 @@
 #include "dtb/wepmenu/call/connect.pwn"
 #include "dtb/sbtd/call/connect.pwn"
 #include "dtb/antilag/call/connect.pwn"
-//#include "dtb/irc/call/connect.pwn"
 #include "dtb/phtd/call/connect.pwn"
 
 // OnPlayerDisconnect
@@ -258,17 +251,14 @@
 #include "dtb/wepmenu/call/disconnect.pwn"
 #include "dtb/sbtd/call/disconnect.pwn"
 #include "dtb/antilag/call/disconnect.pwn"
-//#include "dtb/irc/call/disconnect.pwn"
 #include "dtb/phtd/call/disconnect.pwn"
 #include "dtb/hpicon/call/disconnect.pwn"
 #include "dtb/db/call/disconnect.pwn"
 
 // OnPlayerKicked
-//#include "dtb/irc/call/kick.pwn"
 #include "dtb/db/call/kick.pwn"
 
 // OnPlayerBanned
-//#include "dtb/irc/call/ban.pwn"
 #include "dtb/db/call/ban.pwn"
 
 // OnPlayerHealthSet
@@ -283,7 +273,6 @@
 
 // OnPlayerText
 #include "dtb/ac/call/chat.pwn"
-//#include "dtb/irc/call/chat.pwn"
 #include "dtb/db/call/chat.pwn"
 #include "dtb/adminchat.pwn"
 #include "dtb/teamchat.pwn"
@@ -297,7 +286,6 @@
 #include "dtb/level/call/death.pwn"
 #include "dtb/team/call/death.pwn"
 #include "dtb/spec/call/death.pwn"
-//#include "dtb/irc/call/death.pwn"
 #include "dtb/db/call/death.pwn"
 
 // OnPlayerSpawn
@@ -357,7 +345,6 @@
 #include "dtb/lboard/call/loaded.pwn"
 
 // OnPlayerMultikill
-//#include "dtb/irc/call/multikill.pwn"
 #include "dtb/db/call/multikill.pwn"
 
 // OnDialogResponse
@@ -381,9 +368,6 @@
 
 // OnPlayerClickTextDraw
 #include "dtb/wepmenu/call/clicktd.pwn"
-
-// IRC Callbacks
-//#include "dtb/irc/call/irc.pwn"
 
 // OnPlayerSpectate
 #include "dtb/pshow/call/spec.pwn"
@@ -421,14 +405,6 @@
 #include "dtb/cmd/getid.pwn"
 #include "dtb/cmd/cmds.pwn"
 #include "dtb/cmd/leaderboard.pwn"
-
-// IRC Channel Commands
-//#include "dtb/irc/cmd/cmds.pwn"
-//#include "dtb/irc/cmd/players.pwn"
-//#include "dtb/irc/cmd/kick.pwn"
-//#include "dtb/irc/cmd/ban.pwn"
-//#include "dtb/irc/cmd/restart.pwn"
-//#include "dtb/irc/cmd/shutdown.pwn"
 
 /******************************************************************************/
 
