@@ -1,9 +1,9 @@
 TimeToString(seconds)
 {
 	new hours = seconds / 3600;
-	seconds = seconds % 3600; 
+	seconds %= 3600; 
 	new minutes = seconds / 60;
-	seconds = seconds % 60;
+	seconds %= 60;
 
 	new string[30];
 	if (hours > 0)

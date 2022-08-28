@@ -20,23 +20,15 @@ hook OnSecondPassed()
 		{
 			if (g_GameTime > 0)
 			{
+				new string[6];
 				if (g_IsBombPlanted && !g_IsBombDefused)
 				{
-					new string[6];
 					format(string, sizeof string, "~r~%i", g_GameTime);
 					TextDrawSetString(g_GameTimeTD, string);
 				}
 				else
 				{
-					new minutes, seconds = g_GameTime, string[6];
-
-					while (seconds >= 60)
-					{
-						minutes++;
-						seconds -= 60;
-					}
-
-					format(string, sizeof(string), "%02i:%02i", minutes, seconds);
+					format(string, sizeof(string), "%02i:%02i", g_GameTime / 60, g_GameTime % 60);
 					TextDrawSetString(g_GameTimeTD, string);
 				}
 			}
