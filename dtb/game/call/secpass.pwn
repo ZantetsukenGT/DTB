@@ -19,7 +19,7 @@ hook OnSecondPassed()
 		}
 		else
 		{
-			g_GameState++;
+			g_GameState = STATE_STARTED;
 			g_GameTime = MISSION_TIME;
 			PlaySoundForAll(1057);
 
