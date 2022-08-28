@@ -1,12 +1,7 @@
 
-#include <YSI_Coding\y_hooks>
 
-#define OnPlayerClickPlayerTextDraw OnPClickPTD
-
-hook OnPClickPTD(playerid, PlayerText: playertextid)
+public OnPlayerClickPlayerTextDraw(playerid, PlayerText: playertextid)
 {
-	SendClientMessage(playerid, COLOR_GREEN, "OnPClickPTD");
-
 	if (playertextid == g_WeaponMenuBackTD[playerid])
 	{
 		ShowPlayerWeaponMenu(playerid, 0);
