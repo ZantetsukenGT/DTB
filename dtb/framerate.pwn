@@ -1,26 +1,37 @@
 
 #include <YSI_Coding\y_hooks>
 
-static g_PlayerFramerate[MAX_PLAYERS];
-static old_drunk[MAX_PLAYERS];
+static const FPS_UPDATE_SYNC		 = 205;
 
-stock GetPlayerFramerate(playerid)
+static s_FPS[MAX_PLAYERS]			 = { 0, ... };
+static s_LastDrunkLevel[MAX_PLAYERS] = { 0, ... };
+
+hook OnPlayerConnect(playerid)
 {
-	new current_fps = g_PlayerFramerate[playerid];
-	return current_fps - 1 <= 0 ? 0 : current_fps - 1;
+	s_FPS[playerid]			   = 0;
+	s_LastDrunkLevel[playerid] = 0;
 }
 
-hook OnPlayerUpdate(playerid)
-{
-	new new_drunk = GetPlayerDrunkLevel(playerid);
-	if (new_drunk <= 100)
-		SetPlayerDrunkLevel(playerid, 2000);
-	else if (new_drunk != old_drunk[playerid])
-	{
-		new framerate = old_drunk[playerid] - new_drunk;
-		if (framerate > 0)
-			g_PlayerFramerate[playerid] = framerate;
+stock GetPlayerFramerate(playerid) { return s_FPS[playerid]; }
 
-		old_drunk[playerid] = new_drunk;
+IPacket:FPS_UPDATE_SYNC(playerid, BitStream:bs)
+{
+	new currentDrunkLevel;
+
+	BS_SetReadOffset(bs, 8 + 32);
+	BS_ReadInt32(bs, currentDrunkLevel);
+
+	s_FPS[playerid]			   = max(s_LastDrunkLevel[playerid] - currentDrunkLevel - 1, 0);
+	s_LastDrunkLevel[playerid] = currentDrunkLevel;
+
+	if (currentDrunkLevel <= 750)
+	{
+		new pingBasedCompensation = s_FPS[playerid] * GetPlayerPing(playerid) / 1000;
+		SetPlayerDrunkLevel(playerid, currentDrunkLevel + 1250 - pingBasedCompensation);
+		s_LastDrunkLevel[playerid] += 1250;
 	}
+	// not using this function is sub optimal, but there's not much of a choice with this gamemode
+	// fps, ping and pl textdraws are tied together, i'll let this be updated by a timer instead
+	//CallLocalFunction(#OnFPSUpdate, #ii, playerid, s_FPS[playerid]);
+	return 1;
 }
