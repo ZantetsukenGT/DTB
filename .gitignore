@@ -22,19 +22,21 @@ pawn.lock
 # keep `samp.json` file on version control
 # but make sure the `rcon_password` field is set externally
 # you can use the environment variable `SAMP_RCON_PASSWORD` to do this.
-config.json
 server.cfg
+config.json
 
 # Plugins directory
 plugins/
+components/
 
 # binaries
 *.exe
-*.dll
 *.pdb
+*.dll
 *.so
 announce
 samp03svr
+omp-server
 samp-npc
 
 # logs
@@ -42,6 +44,7 @@ logs/
 server_log.txt
 log.txt
 crashinfo.txt
+*.dmp
 
 # Ban list
 samp.ban
@@ -51,4 +54,5 @@ bans.json
 # Common files
 #
 
+*.db
 *.sublime-workspace
