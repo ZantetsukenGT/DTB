@@ -11,8 +11,6 @@ hook OnPlayerUpdate(playerid)
 	if (GetTickCount() - previous_tick[playerid] > 1000)
 	{
 		ac_CheckPlayerMoney(playerid);
-		ac_CheckPlayerArmour(playerid);
-		ac_CheckPlayerHealth(playerid);
 		ac_CheckPlayerJetpack(playerid);
 		ac_CheckPlayerWeapons(playerid);
 		ac_IsPlayerFlyhacking(playerid);

@@ -121,12 +121,9 @@ hook OnGameEnd(reason)
 			default: continue; // Skip this player
 		}
 
-		new ref_index, Float: ref_health,
-			Float: ref_armour,
+		new ref_index, Float: ref_health = GetPlayerHealth(ref_playerid),
+			Float: ref_armour = GetPlayerArmour(ref_playerid),
 			Float: ref_accuracy = GetPlayerAccuracy(ref_playerid);
-
-		ac_GetPlayerHealth(ref_playerid, ref_health);
-		ac_GetPlayerArmour(ref_playerid, ref_armour);
 
 		foreach (new cmp_playerid : Player)
 		{
@@ -144,11 +141,8 @@ hook OnGameEnd(reason)
 					ref_index++;
 				else if (g_PlayerRoundDamage[cmp_playerid] == g_PlayerRoundDamage[ref_playerid])
 				{
-					new Float: cmp_health,
-						Float: cmp_armour;
-
-					ac_GetPlayerHealth(cmp_playerid, cmp_health);
-					ac_GetPlayerArmour(cmp_playerid, cmp_armour);
+					new Float: cmp_health = GetPlayerHealth(cmp_playerid),
+						Float: cmp_armour = GetPlayerArmour(cmp_playerid);
 
 					if ((cmp_health + cmp_armour) > (ref_health + ref_armour))
 						ref_index++;

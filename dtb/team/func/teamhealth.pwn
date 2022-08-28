@@ -8,11 +8,8 @@ GetTeamHealth(teamid, &current_health, &max_health)
 		max_health += 200;
 		if (!g_PlayerRoundKilled { playerid })
 		{
-			new Float: health,
-				Float: armour;
-
-			ac_GetPlayerHealth(playerid, health);
-			ac_GetPlayerArmour(playerid, armour);
+			new Float: health = GetPlayerHealth(playerid),
+				Float: armour = GetPlayerArmour(playerid);
 
 			current_health += (floatround(health) + floatround(armour));
 		}

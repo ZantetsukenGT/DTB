@@ -4,8 +4,6 @@
 hook OnPlayerDisconnect(playerid, reason)
 {
 	g_acMoneyWarnings { playerid }	  = 0;
-	g_acHealthWarnings { playerid }	  = 0;
-	g_acArmourWarnings { playerid }	  = 0;
 	g_acJetpackWarnings { playerid }  = 0;
 	g_acFlyhackWarnings { playerid }  = 0;
 	g_acNoReloadWarnings { playerid } = 0;

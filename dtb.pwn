@@ -11,7 +11,7 @@
 #include <YSI_Data\y_iterate>
 #include <YSI_Coding\y_va>
 #define WC_CUSTOM_VENDING_MACHINES false
-//#include <weapon-config>
+#include <weapon-config>
 #include <sscanf2>
 #include <zcmd>
 #include <geolocation>
@@ -46,7 +46,6 @@
 #include "dtb/map/data.pwn"		// set map
 #include "dtb/team/data.pwn"	// team stuff
 #include "dtb/bomb/data.pwn"	// bomb stuff
-#include "dtb/skinhit/data.pwn" // damage sync
 #include "dtb/warzone/data.pwn" // warzone stuff
 #include "dtb/wepmenu/data.pwn" // weapon selection
 #include "dtb/tptd/data.pwn"	// HUD; alive & dead team players
@@ -112,8 +111,6 @@
 #include "dtb/bomb/func/plant.pwn"
 #include "dtb/bomb/func/explode.pwn"
 
-#include "dtb/skinhit/func/dmgplayer.pwn"
-
 #include "dtb/warzone/func/inzone.pwn"
 #include "dtb/warzone/func/limits.pwn"
 
@@ -140,9 +137,7 @@
 #include "dtb/mission/func/updatetd.pwn"
 
 #include "dtb/ac/func/repeat.pwn"
-#include "dtb/ac/func/armour.pwn"
 #include "dtb/ac/func/flood.pwn"
-#include "dtb/ac/func/health.pwn"
 #include "dtb/ac/func/jetpack.pwn"
 #include "dtb/ac/func/money.pwn"
 #include "dtb/ac/func/noreload.pwn"
@@ -242,7 +237,6 @@
 #include "dtb/ac/call/disconnect.pwn"
 #include "dtb/disconnectmsg.pwn"
 #include "dtb/kickban/call/disconnect.pwn"
-#include "dtb/skinhit/call/disconnect.pwn"
 #include "dtb/rdata/call/disconnect.pwn"
 #include "dtb/level/call/disconnect.pwn"
 #include "dtb/team/call/disconnect.pwn"
@@ -262,12 +256,10 @@
 #include "dtb/db/call/ban.pwn"
 
 // OnPlayerHealthSet
-#include "dtb/ac/call/healthset.pwn"
 #include "dtb/phtd/call/healthset.pwn"
 #include "dtb/hpicon/call/healthset.pwn"
 
 // OnPlayerArmourSet
-#include "dtb/ac/call/armourset.pwn"
 #include "dtb/phtd/call/armourset.pwn"
 #include "dtb/hpicon/call/armourset.pwn"
 
@@ -279,7 +271,6 @@
 
 // OnPlayerDeath
 #include "dtb/ac/call/death.pwn"
-#include "dtb/skinhit/call/death.pwn"
 #include "dtb/deathmsg.pwn"
 #include "dtb/rdata/call/death.pwn"
 #include "dtb/multikill.pwn"
@@ -323,11 +314,17 @@
 #include "dtb/pshow/call/wepshot.pwn"
 #include "dtb/rdata/call/wepshot.pwn"
 
-// OnPlayerGiveDamage
-#include "dtb/skinhit/call/givedamage.pwn"
+// OnPlayerDamage
+#include "dtb/skinhit/call/damage.pwn"
 
-// OnPlayerTakeDamage
-#include "dtb/skinhit/call/takedamage.pwn"
+// OnPlayerDamageDone
+#include "dtb/skinhit/call/damagedone.pwn"
+
+// OnPlayerDamage
+#include "dtb/skinhit/call/deathfinished.pwn"
+
+// OnPlayerDamage
+#include "dtb/skinhit/call/preparedeath.pwn"
 
 // OnPlayerStateChange
 #include "dtb/level/call/statechange.pwn"

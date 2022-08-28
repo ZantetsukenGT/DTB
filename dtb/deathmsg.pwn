@@ -7,14 +7,11 @@ hook OnPlayerDeath(playerid, killerid, reason)
 	{
 		new reason_name[20],
 			Float: distance = 0.3048 * GetDistanceBetweenPlayers(playerid, killerid),
-			Float: health,
-			Float: armour,
+			Float: health = GetPlayerHealth(killerid),
+			Float: armour = GetPlayerArmour(killerid),
 			message[128];
 
 		GetWeaponName(reason, reason_name, sizeof reason_name);
-
-		ac_GetPlayerHealth(killerid, health);
-		ac_GetPlayerArmour(killerid, armour);
 
 		format(
 			message, sizeof(message), "%s {%06x}killed{%06x} %s {%06x}| %s | %.2fM | +%i", g_PlayerName[killerid],

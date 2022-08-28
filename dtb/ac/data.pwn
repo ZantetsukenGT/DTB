@@ -1,6 +1,4 @@
 #define MAX_AC_MONEY_WARNINGS	 (0)
-#define MAX_AC_ARMOUR_WARNINGS	 (15)
-#define MAX_AC_HEALTH_WARNINGS	 (15)
 #define MAX_AC_WEAPON_WARNINGS	 (15)
 #define MAX_AC_FLYHACK_WARNINGS	 (10)
 #define MAX_AC_JETPACK_WARNINGS	 (0)
@@ -11,22 +9,16 @@
 #define MAX_AC_REPEAT_WARNINGS	 (3)
 
 new g_acMoney[MAX_PLAYERS];
-new Float: g_acHealth[MAX_PLAYERS];
-new Float: g_acArmour[MAX_PLAYERS];
 new bool: g_acWeaponSynced[MAX_PLAYERS][13];
 new g_acWeaponData[MAX_PLAYERS][13][2];
 new g_acWeaponWarnings[MAX_PLAYERS][13];
 new g_acNoReloadWarnings[MAX_PLAYERS char];
 new bool: g_acJetpack[MAX_PLAYERS char];
 new g_acMoneyWarnings[MAX_PLAYERS char];
-new g_acHealthWarnings[MAX_PLAYERS char];
-new g_acArmourWarnings[MAX_PLAYERS char];
 new g_acFlyhackWarnings[MAX_PLAYERS char];
 new g_acJetpackWarnings[MAX_PLAYERS char];
 new g_acMessageWarnings[MAX_PLAYERS char];
 new g_acMessageString[MAX_PLAYERS][MAX_AC_REPEAT_STRING];
 
 #define ac_GetPlayerMoney(%0)				(g_acMoney[%0])
-#define ac_GetPlayerHealth(%0,%1)			(%1 = g_acHealth[%0])
-#define ac_GetPlayerArmour(%0,%1)			(%1 = g_acArmour[%0])
 #define ac_GetPlayerWeaponData(%0,%1,%2,%3) (%2 = g_acWeaponData[%0][%1][0], %3 = g_acWeaponData[%0][%1][1])
