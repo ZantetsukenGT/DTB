@@ -1,4 +1,4 @@
-stock BanPlayer(playerid, const reason[] = "none", by_playerid = INVALID_PLAYER_ID, const by_irc_user[] = "none")
+stock BanPlayer(playerid, const reason[] = "none", by_playerid = INVALID_PLAYER_ID)
 {
 	if (g_IsPlayerKicked { playerid })
 		return 0;
@@ -30,6 +30,6 @@ stock BanPlayer(playerid, const reason[] = "none", by_playerid = INVALID_PLAYER_
 	g_IsPlayerKicked { playerid } = true;
 	DelayKick(playerid);
 
-	CallLocalFunction("OnPlayerBanned", "iiss", playerid, by_playerid, by_irc_user, reason);
+	CallLocalFunction("OnPlayerBanned", "iis", playerid, by_playerid, reason);
 	return 1;
 }
