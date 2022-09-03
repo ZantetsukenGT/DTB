@@ -4,4 +4,5 @@
 hook OnGameModeExit()
 {
 	KillTimer(g_GameTimer);
+	return 1;
 }

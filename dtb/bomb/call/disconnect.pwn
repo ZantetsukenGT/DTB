@@ -12,4 +12,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	g_BombProgressMaxTD[playerid]	= PlayerText: INVALID_TEXT_DRAW;
 	g_BombProgressValueTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
 	g_BombTextTD[playerid]			= PlayerText: INVALID_TEXT_DRAW;
+	return 1;
 }

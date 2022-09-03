@@ -1,4 +1,8 @@
 
 #include <YSI_Coding\y_hooks>
 
-hook OnPlayerSpawn(playerid) { SetPlayerTeam(playerid, 0); }
+hook OnPlayerSpawn(playerid)
+{
+	SetPlayerTeam(playerid, 0);
+	return 1;
+}

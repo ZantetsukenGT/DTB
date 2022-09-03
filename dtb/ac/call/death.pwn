@@ -4,6 +4,6 @@
 hook OnPlayerDeath(playerid, killerid, reason)
 {
 	if (ac_CheckPlayerFlooding(playerid))
-		return 0;
+		return ~0;
 	return 1;
 }

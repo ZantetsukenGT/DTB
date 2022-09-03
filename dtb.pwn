@@ -6,7 +6,7 @@
 #include <omp>
 #include <whirlpool>
 #include <a_mysql>
-#include <Pawn.RakNet>		   // Allows you to capture and analyze RakNet traffic
+#include <Pawn.RakNet> // Allows you to capture and analyze RakNet traffic
 
 #include <YSI_Data\y_iterate>
 #include <YSI_Coding\y_va>
@@ -18,25 +18,26 @@
 
 /******************************************************************************/
 
-#include "dtb/weaponmodels.pwn" // weapon models
-#include "dtb/soundforall.pwn"	// play sound for all function
-#include "dtb/preloadanim.pwn"	// preload animations
-#include "dtb/dialogs.pwn"		// dialog enum
-#include "dtb/framerate.pwn"	// get player framerate
-#include "dtb/float.pwn"		// float functions
-#include "dtb/timestring.pwn"	// Time > Time String
-#include "dtb/health.pwn"		// on player health set
-#include "dtb/armour.pwn"		// on player armour set
-#include "dtb/isspawned.pwn"	// is player spawned function
-#include "dtb/keys.pwn"			// key macros
-#include "dtb/colors.pwn"		// colors
-#include "dtb/name.pwn"			// name player variables
-#include "dtb/ip.pwn"			// ip adress player variables
-#include "dtb/gpci.pwn"			// gpci player variables
-#include "dtb/geoip.pwn"		// GEOIP player variables
-#include "dtb/sessiontime.pwn"	// get player session time
-#include "dtb/adminlevels.pwn"	// admin level names
-#include "dtb/skipclass.pwn"	// skip class selection
+#include "dtb/weaponmodels.pwn"	 // weapon models
+#include "dtb/soundforall.pwn"	 // play sound for all function
+#include "dtb/preloadanim.pwn"	 // preload animations
+#include "dtb/dialogs.pwn"		 // dialog enum
+#include "dtb/framerate.pwn"	 // get player framerate
+#include "dtb/float.pwn"		 // float functions
+#include "dtb/timestring.pwn"	 // Time > Time String
+#include "dtb/health.pwn"		 // on player health set
+#include "dtb/armour.pwn"		 // on player armour set
+#include "dtb/isspawned.pwn"	 // is player spawned function
+#include "dtb/keys.pwn"			 // key macros
+#include "dtb/colors.pwn"		 // colors
+#include "dtb/name.pwn"			 // name player variables
+#include "dtb/ip.pwn"			 // ip adress player variables
+#include "dtb/gpci.pwn"			 // gpci player variables
+#include "dtb/geoip.pwn"		 // GEOIP player variables
+#include "dtb/sessiontime.pwn"	 // get player session time
+#include "dtb/adminlevels.pwn"	 // admin level names
+#include "dtb/skipclass.pwn"	 // skip class selection
+#include "dtb/trim-wrappers.pwn" // trim utils
 
 // data
 #include "dtb/ac/data.pwn"
@@ -409,7 +410,7 @@
 
 main() {}
 
-hook OnGameModeInit()
+public OnGameModeInit()
 {
 	// Hostname
 	SendRconCommand("hostname [DTB] Defend The Bombsite");
@@ -432,11 +433,12 @@ hook OnGameModeInit()
 	// Essential class (do not remove!)
 	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
 
-// create the custom map "italy" (credits to DarknessLighter, do not remove)
+	// create the custom map "italy" (credits to DarknessLighter, do not remove)
 #include "dtb/map/italy.pwn"
+	return 1;
 }
 
-hook OnGameModeExit()
+public OnGameModeExit()
 {
 	// destroy custom map
 	for (new objectid = 1; objectid <= MAX_OBJECTS; objectid++)
@@ -444,9 +446,10 @@ hook OnGameModeExit()
 		if (IsValidObject(objectid))
 			DestroyObject(objectid);
 	}
+	return 1;
 }
 
-hook OnPlayerSpawn(playerid)
+public OnPlayerSpawn(playerid)
 {
 	if (g_PlayerRoundKilled { playerid })
 		return TogglePlayerSpectating(playerid, true), 1;
@@ -464,15 +467,14 @@ hook OnPlayerSpawn(playerid)
 	return 1;
 }
 
-hook OnPlayerCommandReceived(playerid, cmdtext[])
+public OnPlayerCommandReceived(playerid, cmdtext[])
 {
 	if (ac_CheckPlayerFlooding(playerid))
-		return 0;
-	else
-		return 1;
+		return ~0;
+	return 1;
 }
 
-hook OnPlayerCommandPerformed(playerid, cmdtext[], success)
+public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 {
 	if (!success)
 	{
@@ -482,8 +484,8 @@ hook OnPlayerCommandPerformed(playerid, cmdtext[], success)
 	return 1;
 }
 
-hook OnPlayerUpdate(playerid)
+public OnPlayerUpdate(playerid)
 {
 	// Only send player updates if the player is not frozen
-	return 1;//IsPlayerControllable(playerid);
+	return 1; //IsPlayerControllable(playerid);
 }

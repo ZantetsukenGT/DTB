@@ -65,4 +65,5 @@ hook OnPlayerConnect(playerid)
 			PlayerTextDrawSetSelectable(playerid, g_WeaponMenuNameTD[playerid][item], 0);
 		}
 	}
+	return 1;
 }

@@ -12,4 +12,5 @@ hook OnPlayerSpawn(playerid)
 			SelectTextDraw(playerid, COLOR_RED);
 		}
 	}
+	return 1;
 }

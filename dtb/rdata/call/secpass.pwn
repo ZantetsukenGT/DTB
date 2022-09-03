@@ -11,4 +11,5 @@ hook OnSecondPassed()
 			SetPlayerScore(playerid, 0);
 		}
 	}
+	return 1;
 }

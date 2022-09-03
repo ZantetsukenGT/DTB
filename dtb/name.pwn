@@ -11,4 +11,8 @@ hook native SetPlayerName(playerid, const name[])
 	return success;
 }
 
-hook OnPlayerConnect(playerid) { GetPlayerName(playerid, g_PlayerName[playerid], MAX_PLAYER_NAME + 1); }
+hook OnPlayerConnect(playerid)
+{
+	GetPlayerName(playerid, g_PlayerName[playerid], MAX_PLAYER_NAME + 1);
+	return 1;
+}

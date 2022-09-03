@@ -9,4 +9,5 @@ hook OnGameEnd(reason)
 		TextDrawHideForAll(g_TeamCurrentHealthTD[teamid]);
 		TextDrawHideForAll(g_TeamTextHealthTD[teamid]);
 	}
+	return 1;
 }

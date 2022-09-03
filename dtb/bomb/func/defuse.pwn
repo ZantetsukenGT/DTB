@@ -51,6 +51,7 @@ hook UpdateBombDefuse()
 		// Beep Sound
 		PlaySoundForAll(21000, x, y, z);
 	}
+	return 1;
 }
 
 StartPlayerDefusingBomb(playerid)

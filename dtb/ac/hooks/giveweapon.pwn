@@ -12,5 +12,5 @@ hook native GivePlayerWeapon(playerid, weaponid, ammo)
 	if (weaponid == 39)
 		GivePlayerWeapon(playerid, 40, 1);
 
-	continue(playerid, weaponid, ammo);
+	return continue(playerid, weaponid, ammo);
 }

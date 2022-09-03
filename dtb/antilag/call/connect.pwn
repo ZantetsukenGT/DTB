@@ -44,4 +44,5 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawShow(playerid, g_FramerateTD[playerid]);
 	PlayerTextDrawShow(playerid, g_PacketlossTD[playerid]);
 	PlayerTextDrawShow(playerid, g_AntilagBoxTD[playerid]);
+	return 1;
 }

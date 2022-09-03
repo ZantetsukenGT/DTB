@@ -13,4 +13,5 @@ hook OnPlayerSpawn(playerid)
 			ShowPlayerForTeam(playerid, GetTeamOpponents(teamid), false);
 		}
 	}
+	return 1;
 }

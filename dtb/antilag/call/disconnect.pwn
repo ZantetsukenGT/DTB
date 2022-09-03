@@ -16,4 +16,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	g_PingTD[playerid]		 = PlayerText: INVALID_TEXT_DRAW;
 	g_FramerateTD[playerid]	 = PlayerText: INVALID_TEXT_DRAW;
 	g_PacketlossTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
+	return 1;
 }

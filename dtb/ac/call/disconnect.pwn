@@ -15,4 +15,5 @@ hook OnPlayerDisconnect(playerid, reason)
 		g_acWeaponWarnings[playerid][slot] = 0;
 		g_acWeaponSynced[playerid][slot]   = false;
 	}
+	return 1;
 }

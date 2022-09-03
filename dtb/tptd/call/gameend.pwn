@@ -7,4 +7,5 @@ hook OnGameEnd(reason)
 	{
 		foreach (new i : Player) TextDrawHideForAll(g_TeamPlayersTD[teamid][i]);
 	}
+	return 1;
 }

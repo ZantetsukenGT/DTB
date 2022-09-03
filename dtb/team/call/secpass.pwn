@@ -8,4 +8,5 @@ hook OnSecondPassed()
 		foreach (new playerid : Player)
 			g_PlayerTeam[playerid] = TEAM_NONE;
 	}
+	return 1;
 }

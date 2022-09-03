@@ -54,4 +54,5 @@ hook OnPlayerStateChange(playerid, newstate, oldstate)
 			}
 		}
 	}
+	return 1;
 }

@@ -11,4 +11,5 @@ hook OnPlayerDeath(playerid, killerid, reason)
 		if (GetPlayerSpectatePlayer(spectatorid) == playerid)
 			TogglePlayerSpectating(spectatorid, false);
 	}
+	return 1;
 }

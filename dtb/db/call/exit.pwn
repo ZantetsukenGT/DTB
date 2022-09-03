@@ -5,4 +5,5 @@ hook OnGameModeExit()
 {
 	if (mysql_close(g_DBHandle))
 		print("Database connection closed.");
+	return 1;
 }

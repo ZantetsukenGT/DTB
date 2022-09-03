@@ -2,7 +2,7 @@ hook OnPlayerAKALoaded(playerid, forplayerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))
-		return 1;
+		return ~1;
 	if (rows == 0)
 		SendClientMessage(forplayerid, COLOR_RED, "This player has no other names!");
 	else
@@ -18,5 +18,5 @@ hook OnPlayerAKALoaded(playerid, forplayerid)
 			SendClientMessage(forplayerid, COLOR_WHITE, name);
 		}
 	}
-	return 1;
+	return ~1;
 }

@@ -78,4 +78,5 @@ hook OnSecondPassed()
 		g_BombPlanterID = INVALID_PLAYER_ID;
 		g_BombDefuserID = INVALID_PLAYER_ID;
 	}
+	return 1;
 }

@@ -10,4 +10,5 @@ hook OnPlayerSpawn(playerid)
 			SetPlayerCameraAtBombsite(playerid, g_ObjectiveBombsite);
 		}
 	}
+	return 1;
 }

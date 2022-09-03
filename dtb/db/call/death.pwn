@@ -8,4 +8,5 @@ hook OnPlayerDeath(playerid, killerid, reason)
 		g_PlayerKills[killerid]++;
 
 	WriteDeathlog(playerid, killerid, reason);
+	return 1;
 }

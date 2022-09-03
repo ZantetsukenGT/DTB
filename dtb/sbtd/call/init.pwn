@@ -154,4 +154,5 @@ hook OnGameModeInit()
 		TextDrawSetShadow(g_ScoreboardColumnTD[column], 1);
 		TextDrawSetSelectable(g_ScoreboardColumnTD[column], 0);
 	}
+	return 1;
 }

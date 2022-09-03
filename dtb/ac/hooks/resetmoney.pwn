@@ -4,5 +4,5 @@
 hook native ResetPlayerMoney(playerid)
 {
 	g_acMoney[playerid] = 0;
-	continue(playerid);
+	return continue(playerid);
 }

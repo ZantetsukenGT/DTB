@@ -52,6 +52,7 @@ hook UpdateBombPlant()
 		// Beep Sound
 		PlaySoundForAll(21000, x, y, z);
 	}
+	return 1;
 }
 
 StartPlayerPlantingBomb(playerid, bombsiteid)

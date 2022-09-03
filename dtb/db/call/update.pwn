@@ -3,7 +3,11 @@
 
 static previous_time[MAX_PLAYERS];
 
-hook OnPlayerConnect(playerid) { previous_time[playerid] = GetTickCount() - 31000; }
+hook OnPlayerConnect(playerid)
+{
+	previous_time[playerid] = GetTickCount() - 31000;
+	return 1;
+}
 
 hook OnPlayerUpdate(playerid)
 {
@@ -13,4 +17,5 @@ hook OnPlayerUpdate(playerid)
 			SavePlayerAccount(playerid, g_PlayerAccountID[playerid]);
 		previous_time[playerid] = GetTickCount();
 	}
+	return 1;
 }

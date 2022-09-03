@@ -16,4 +16,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	g_PlayerXPProgressTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
 	g_PlayerLevelTextTD[playerid]  = PlayerText: INVALID_TEXT_DRAW;
 	g_PlayerXPTextTD[playerid]	   = PlayerText: INVALID_TEXT_DRAW;
+	return 1;
 }

@@ -11,4 +11,5 @@ hook OnPlayerArmourSet(playerid, Float: new_armour, Float: old_armour)
 	}
 	else
 		PlayerTextDrawHide(playerid, g_PlayerArmourTD[playerid]);
+	return 1;
 }

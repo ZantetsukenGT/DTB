@@ -5,4 +5,5 @@ hook OnPlayerHealthSet(playerid, Float: new_health, Float: old_health)
 {
 	if (new_health < old_health)
 		CreatePlayerDamageIcon(playerid, 1240);
+	return 1;
 }

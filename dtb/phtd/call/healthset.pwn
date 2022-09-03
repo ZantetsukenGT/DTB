@@ -11,4 +11,5 @@ hook OnPlayerHealthSet(playerid, Float: new_health, Float: old_health)
 	}
 	else
 		PlayerTextDrawHide(playerid, g_PlayerHealthTD[playerid]);
+	return 1;
 }

@@ -5,4 +5,5 @@ hook OnPlayerConnect(playerid)
 {
 	LoadPlayerAccount(playerid);
 	LoadPlayerSessions(playerid); // Loads previous sessions, then check for bans
+	return 1;
 }

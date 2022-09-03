@@ -5,4 +5,8 @@
 
 new g_PlayerGPCI[MAX_PLAYERS][MAX_GPCI + 1];
 
-hook OnPlayerConnect(playerid) { gpci(playerid, g_PlayerGPCI[playerid], MAX_GPCI + 1); }
+hook OnPlayerConnect(playerid)
+{
+	gpci(playerid, g_PlayerGPCI[playerid], MAX_GPCI + 1);
+	return 1;
+}

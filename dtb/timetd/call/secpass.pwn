@@ -55,4 +55,5 @@ hook OnSecondPassed()
 		}
 	}
 	TextDrawShowForAll(g_GameTimeTD);
+	return 1;
 }

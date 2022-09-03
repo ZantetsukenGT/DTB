@@ -35,4 +35,5 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawColor(playerid, g_PlayerXPTextTD[playerid], -1);
 	PlayerTextDrawSetOutline(playerid, g_PlayerXPTextTD[playerid], 1);
 	PlayerTextDrawSetProportional(playerid, g_PlayerXPTextTD[playerid], 1);
+	return 1;
 }

@@ -8,4 +8,5 @@ hook OnGameEnd(reason)
 		if (g_pWeaponMenu { playerid } != INVALID_WEAPONMENU_ID)
 			HidePlayerWeaponMenu(playerid);
 	}
+	return 1;
 }

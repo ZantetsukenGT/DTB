@@ -4,6 +4,6 @@
 hook OnPlayerUpdate(playerid)
 {
 	if (g_IsPlayerKicked { playerid })
-		return 0;
+		return ~0;
 	return 1;
 }

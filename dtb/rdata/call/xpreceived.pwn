@@ -5,4 +5,5 @@ hook OnPlayerXPReceived(playerid, xp, const reason[])
 {
 	g_PlayerRoundScore[playerid] += xp;
 	SetPlayerScore(playerid, g_PlayerRoundScore[playerid]);
+	return 1;
 }

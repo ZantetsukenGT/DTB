@@ -4,7 +4,11 @@
 static last_kill_time[MAX_PLAYERS];
 static stacked_kills[MAX_PLAYERS];
 
-hook OnPlayerConnect(playerid) { last_kill_time[playerid] = GetTickCount() - 11000; }
+hook OnPlayerConnect(playerid)
+{
+	last_kill_time[playerid] = GetTickCount() - 11000;
+	return 1;
+}
 
 hook OnPlayerDeath(playerid, killerid, reason)
 {
@@ -43,4 +47,5 @@ hook OnPlayerDeath(playerid, killerid, reason)
 		}
 		last_kill_time[killerid] = GetTickCount();
 	}
+	return 1;
 }

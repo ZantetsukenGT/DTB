@@ -13,4 +13,5 @@ hook OnPlayerUpdate(playerid)
 
 	if (g_IsPlayerShown { playerid } && (gettime() - g_LastPlayerShowTime[playerid]) >= 3)
 		ShowPlayerForOpponents(playerid, false);
+	return 1;
 }

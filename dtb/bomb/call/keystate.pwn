@@ -23,4 +23,5 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				CancelPlayerDefusingBomb(playerid);
 		}
 	}
+	return 1;
 }

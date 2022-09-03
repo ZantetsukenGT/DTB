@@ -21,4 +21,5 @@ hook OnGameModeExit()
 			TextDrawDestroy(g_ScoreboardAccuracyTD[teamid][slot]);
 		}
 	}
+	return 1;
 }

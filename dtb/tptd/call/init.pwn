@@ -17,4 +17,5 @@ hook OnGameModeInit()
 			TextDrawTextSize(g_TeamPlayersTD[teamid][slot], 26.0, 29.0);
 		}
 	}
+	return 1;
 }

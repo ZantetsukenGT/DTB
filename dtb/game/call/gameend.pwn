@@ -31,4 +31,5 @@ hook OnGameEnd(reason)
 			}
 		}
 	}
+	return 1;
 }

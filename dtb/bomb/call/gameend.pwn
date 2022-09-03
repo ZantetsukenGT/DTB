@@ -7,4 +7,5 @@ hook OnGameEnd(reason)
 		CancelPlayerPlantingBomb(g_BombPlanterID);
 	if (g_IsBombBeingDefused)
 		CancelPlayerDefusingBomb(g_BombDefuserID);
+	return 1;
 }

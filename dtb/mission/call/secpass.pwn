@@ -49,4 +49,5 @@ hook OnSecondPassed()
 			SetCameraBehindPlayer(playerid);
 		}
 	}
+	return 1;
 }

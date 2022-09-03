@@ -10,5 +10,5 @@ hook native ResetPlayerWeapons(playerid)
 		g_acWeaponWarnings[playerid][slot] = 0;
 		g_acWeaponSynced[playerid][slot]   = false;
 	}
-	continue(playerid);
+	return continue(playerid);
 }

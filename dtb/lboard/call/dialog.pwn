@@ -8,7 +8,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case DIALOG_LB_MAIN:
 		{
 			if (!response)
-				return 1;
+				return ~1;
 
 			switch (listitem)
 			{
@@ -25,9 +25,13 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				case 10: ShowPlayerLeaderboardDialog(playerid, DIALOG_LB_TIME);
 				case 11: ShowPlayerLeaderboardDialog(playerid, DIALOG_LB_LEVEL);
 			}
-			return 1;
+			return ~1;
 		}
-		case DIALOG_LB_KILLS..DIALOG_LB_LEVEL: return ShowPlayerLeaderboardDialog(playerid, DIALOG_LB_MAIN), 1;
+		case DIALOG_LB_KILLS..DIALOG_LB_LEVEL:
+		{
+			ShowPlayerLeaderboardDialog(playerid, DIALOG_LB_MAIN);
+			return ~1;
+		}
 	}
 	return 0;
 }

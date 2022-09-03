@@ -1774,4 +1774,5 @@ hook OnGameModeInit()
 	CreateVehicle(473, -2417.89, -944.81, 0.84, 61.31, 56, 15, -1); // Dinghy
 	CreateVehicle(470, -2217.03, -2407.24, 31.83, 232.11, 43, 0, -1); // Patriot
 	CreateVehicle(468, -2508.10, -1892.62, 297.11, 25.01, 6, 6, -1); // Sanchez
+	return 1;
 }

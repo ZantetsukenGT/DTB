@@ -8,4 +8,5 @@ hook OnPlayerDisconnect(playerid, reason)
 		g_pDamageIconCreated { playerid } = false;
 		DestroyObject(g_pDamageIconObject[playerid]);
 	}
+	return 1;
 }

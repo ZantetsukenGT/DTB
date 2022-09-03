@@ -16,4 +16,5 @@ hook OnPlayerLeaveTeam(playerid, teamid, reason)
 	}
 	else if (g_IsBombBeingDefused && g_BombDefuserID == playerid)
 		CancelPlayerDefusingBomb(playerid);
+	return 1;
 }

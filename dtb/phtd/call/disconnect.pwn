@@ -7,4 +7,5 @@ hook OnPlayerDisconnect(playerid, reason)
 
 	g_PlayerHealthTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
 	g_PlayerHealthTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
+	return 1;
 }

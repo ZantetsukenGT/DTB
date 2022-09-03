@@ -38,4 +38,5 @@ hook OnGameModeInit()
 		TextDrawSetProportional(g_TeamTextHealthTD[teamid], 1);
 		TextDrawSetShadow(g_TeamTextHealthTD[teamid], 1);
 	}
+	return 1;
 }

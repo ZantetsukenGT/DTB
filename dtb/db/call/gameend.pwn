@@ -14,4 +14,5 @@ hook OnGameEnd(reason)
 				g_PlayerGamesLost[playerid]++;
 		}
 	}
+	return 1;
 }

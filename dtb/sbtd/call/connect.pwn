@@ -11,4 +11,5 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawColor(playerid, g_pScoreboardResultTD[playerid], COLOR_WHITE);
 	PlayerTextDrawSetProportional(playerid, g_pScoreboardResultTD[playerid], 1);
 	PlayerTextDrawSetShadow(playerid, g_pScoreboardResultTD[playerid], 2);
+	return 1;
 }

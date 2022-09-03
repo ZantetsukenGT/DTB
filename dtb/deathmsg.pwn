@@ -20,4 +20,5 @@ hook OnPlayerDeath(playerid, killerid, reason)
 		SendClientMessageToAll(GetPlayerColor(killerid), message);
 	}
 	SendDeathMessage(killerid, playerid, reason);
+	return 1;
 }

@@ -25,4 +25,5 @@ hook OnPlayerDisconnect(playerid, reason)
 		g_WeaponMenuIconTD[playerid][item] = PlayerText: INVALID_TEXT_DRAW;
 		g_WeaponMenuNameTD[playerid][item] = PlayerText: INVALID_TEXT_DRAW;
 	}
+	return 1;
 }

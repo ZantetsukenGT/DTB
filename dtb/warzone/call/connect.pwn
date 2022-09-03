@@ -27,4 +27,5 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawSetProportional(playerid, g_ZoneTextTD[playerid], 1);
 	PlayerTextDrawSetShadow(playerid, g_ZoneTextTD[playerid], 2);
 	PlayerTextDrawSetSelectable(playerid, g_ZoneTextTD[playerid], 0);
+	return 1;
 }

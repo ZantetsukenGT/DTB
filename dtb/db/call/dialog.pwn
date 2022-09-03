@@ -7,19 +7,22 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 		new accountid = g_PlayerAccountID[playerid];
 		if (accountid == 0)
-			return 1;
+			return ~1;
 
 		if (!g_IsPlayerRegistered { playerid })
-			return 1;
+			return ~1;
 
 		if (!response)
-			return ShowPlayerLoginDialog(playerid), 1;
+		{
+			ShowPlayerLoginDialog(playerid);
+			return ~1;
+		}
 
 		if (inputtext[0] == 0)
 		{
 			SendClientMessage(playerid, COLOR_RED, "You did not enter any password!");
 			ShowPlayerLoginDialog(playerid);
-			return 1;
+			return ~1;
 		}
 
 		new saltpass[MAX_PASSWORD + MAX_SALT + 1], hash[MAX_PASSWORD_HASH + 1];
@@ -39,7 +42,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				ShowPlayerLoginDialog(playerid);
 			}
 		}
-		return 1;
+		return ~1;
 	}
-	return 0;
+	return 1;
 }

@@ -7,4 +7,5 @@ hook OnSecondPassed()
 	{
 		for (new warzone; warzone < 4; warzone++) GangZoneDestroy(g_ZoneID[warzone]);
 	}
+	return 1;
 }

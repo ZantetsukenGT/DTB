@@ -11,4 +11,5 @@ hook OnGameModeInit()
 	TextDrawColor(g_GameTimeTD, COLOR_WHITE);
 	TextDrawSetProportional(g_GameTimeTD, 1);
 	TextDrawSetShadow(g_GameTimeTD, 1);
+	return 1;
 }

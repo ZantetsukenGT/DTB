@@ -26,4 +26,5 @@ hook OnPlayerSpawn(playerid)
 				ShowPlayerBombIcon(playerid, false);
 		}
 	}
+	return 1;
 }

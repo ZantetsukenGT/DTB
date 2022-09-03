@@ -1,4 +1,8 @@
 
 #include <YSI_Coding\y_hooks>
 
-hook OnBombDefused(playerid, bombsiteid) { g_PlayerBombsDefused[playerid]++; }
+hook OnBombDefused(playerid, bombsiteid)
+{
+	g_PlayerBombsDefused[playerid]++;
+	return 1;
+}

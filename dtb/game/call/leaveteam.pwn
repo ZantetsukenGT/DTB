@@ -21,4 +21,5 @@ hook OnPlayerLeaveTeam(playerid, teamid, reason)
 		else if (reason == LEAVE_TEAM_DEATH)
 			EndGame(REASON_DEFEND_KILLED);
 	}
+	return 1;
 }

@@ -13,4 +13,5 @@ hook OnGameEnd(reason)
 				SetPlayerCameraAtBombsite(playerid, g_BombPlantSite);
 		}
 	}
+	return 1;
 }

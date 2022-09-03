@@ -31,4 +31,5 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawColor(playerid, g_BombTextTD[playerid], COLOR_WHITE);
 	PlayerTextDrawSetOutline(playerid, g_BombTextTD[playerid], 1);
 	PlayerTextDrawSetProportional(playerid, g_BombTextTD[playerid], 1);
+	return 1;
 }

@@ -24,4 +24,5 @@ hook OnPlayerSpawn(playerid)
 			SetPlayerInterior(playerid, GetMapInterior(mapid));
 		}
 	}
+	return 1;
 }

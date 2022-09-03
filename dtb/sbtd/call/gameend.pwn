@@ -198,4 +198,5 @@ hook OnGameEnd(reason)
 		TextDrawSetString(g_ScoreboardAccuracyTD[ref_teamid][ref_index], accuracy);
 		TextDrawShowForAll(g_ScoreboardAccuracyTD[ref_teamid][ref_index]);
 	}
+	return 1;
 }

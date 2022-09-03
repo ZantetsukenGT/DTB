@@ -14,4 +14,5 @@ hook OnPlayerUpdate(playerid)
 {
 	if (IsPlayerSpawned(playerid) && IsPlayerSwimming(playerid))
 		SetPlayerHealth(playerid, 0.0);
+	return 1;
 }

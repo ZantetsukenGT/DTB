@@ -10,4 +10,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	g_PlayerZoneWarnings { playerid } = 0;
 	g_ZoneBackgroundTD[playerid]	  = PlayerText: INVALID_TEXT_DRAW;
 	g_ZoneTextTD[playerid]			  = PlayerText: INVALID_TEXT_DRAW;
+	return 1;
 }

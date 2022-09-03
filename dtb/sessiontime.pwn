@@ -7,4 +7,8 @@ stock GetPlayerJoinTime(playerid) { return g_PlayerJoinTime[playerid]; }
 
 stock GetPlayerSessionTime(playerid) { return gettime() - g_PlayerJoinTime[playerid]; }
 
-hook OnPlayerConnect(playerid) { g_PlayerJoinTime[playerid] = gettime(); }
+hook OnPlayerConnect(playerid)
+{
+	g_PlayerJoinTime[playerid] = gettime();
+	return 1;
+}

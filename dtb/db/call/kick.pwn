@@ -20,4 +20,5 @@ hook OnPlayerKicked(playerid, by_playerid, const reason[])
 			reason);
 	}
 	mysql_tquery(g_DBHandle, query);
+	return 1;
 }

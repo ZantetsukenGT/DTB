@@ -11,4 +11,5 @@ hook OnGameEnd(reason)
 				GivePlayerXP(playerid, 1, "Round Winner");
 		}
 	}
+	return 1;
 }

@@ -14,4 +14,5 @@ hook OnPlayerConnect(playerid)
 	GetIPCountry(g_PlayerIP[playerid], g_PlayerCountry[playerid], MAX_COUNTRY_NAME + 1);
 	GetIPCity(g_PlayerIP[playerid], g_PlayerCity[playerid], MAX_CITY_NAME + 1);
 	GetIPISP(g_PlayerIP[playerid], g_PlayerISP[playerid], MAX_ISP_NAME + 1);
+	return 1;
 }

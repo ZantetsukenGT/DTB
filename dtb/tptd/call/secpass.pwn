@@ -7,4 +7,5 @@ hook OnSecondPassed()
 	{
 		for (new teamid; teamid < 2; teamid++) UpdateTeamPlayersTextdraws(teamid);
 	}
+	return 1;
 }

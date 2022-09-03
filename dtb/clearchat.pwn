@@ -11,4 +11,8 @@ ClearChatForAll()
 	for (new i = 0; i < 99; i++) { SendClientMessageToAll(COLOR_WHITE, ""); }
 }
 
-hook OnPlayerConnect(playerid) { ClearPlayerChat(playerid); }
+hook OnPlayerConnect(playerid)
+{
+	ClearPlayerChat(playerid);
+	return 1;
+}

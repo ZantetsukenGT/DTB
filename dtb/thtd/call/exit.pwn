@@ -9,4 +9,5 @@ hook OnGameModeExit()
 		TextDrawDestroy(g_TeamCurrentHealthTD[teamid]);
 		TextDrawDestroy(g_TeamTextHealthTD[teamid]);
 	}
+	return 1;
 }

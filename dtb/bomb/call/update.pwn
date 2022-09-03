@@ -3,7 +3,11 @@
 
 static previous_tick[MAX_PLAYERS];
 
-hook OnPlayerConnect(playerid) { previous_tick[playerid] = GetTickCount() - 510; }
+hook OnPlayerConnect(playerid)
+{
+	previous_tick[playerid] = GetTickCount() - 510;
+	return 1;
+}
 
 hook OnPlayerUpdate(playerid)
 {
@@ -45,4 +49,5 @@ hook OnPlayerUpdate(playerid)
 		}
 		previous_tick[playerid] = GetTickCount();
 	}
+	return 1;
 }

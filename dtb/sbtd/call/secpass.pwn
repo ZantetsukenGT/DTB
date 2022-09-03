@@ -29,4 +29,5 @@ hook OnSecondPassed()
 			}
 		}
 	}
+	return 1;
 }

@@ -2,7 +2,7 @@ hook OnPlayerAutoLogin(playerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))
-		return 1;
+		return ~1;
 	if (rows > 0)
 	{
 		new last_ip[MAX_IPV4 + 1], last_gpci[MAX_GPCI + 1];
@@ -19,5 +19,5 @@ hook OnPlayerAutoLogin(playerid)
 	}
 	else
 		ShowPlayerLoginDialog(playerid);
-	return 1;
+	return ~1;
 }

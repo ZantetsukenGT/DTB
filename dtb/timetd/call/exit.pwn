@@ -4,4 +4,5 @@
 hook OnGameModeExit()
 {
 	TextDrawDestroy(g_GameTimeTD);
+	return 1;
 }

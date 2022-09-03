@@ -8,5 +8,5 @@ hook native SetPlayerSpecialAction(playerid, actionid)
 		g_acJetpack { playerid }		 = true;
 		g_acJetpackWarnings { playerid } = 0;
 	}
-	continue(playerid, actionid);
+	return continue(playerid, actionid);
 }

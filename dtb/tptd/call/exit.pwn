@@ -7,4 +7,5 @@ hook OnGameModeExit()
 	{
 		for (new slot; slot < MAX_TEAM_PLAYERS; slot++) TextDrawDestroy(g_TeamPlayersTD[teamid][slot]);
 	}
+	return 1;
 }

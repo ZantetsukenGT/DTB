@@ -7,4 +7,5 @@ hook OnPlayerStateChange(playerid, newstate, oldstate)
 		PlayerTextDrawHide(playerid, g_PlayerHealthTD[playerid]);
 		PlayerTextDrawHide(playerid, g_PlayerArmourTD[playerid]);
 	}
+	return 1;
 }

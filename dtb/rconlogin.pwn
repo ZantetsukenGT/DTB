@@ -41,4 +41,5 @@ hook OnRconLoginAttempt(ip[], password[], success)
 
 		SendClientMessageToAll(COLOR_ORANGE, message);
 	}
+	return 1;
 }

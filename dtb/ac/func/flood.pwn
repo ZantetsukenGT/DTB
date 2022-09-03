@@ -2,7 +2,11 @@
 #include <YSI_Coding\y_hooks>
 
 static previous_tick[MAX_PLAYERS];
-hook OnPlayerConnect(playerid) { previous_tick[playerid] = GetTickCount() - (MIN_AC_FLOOD_RATE + 10); }
+hook OnPlayerConnect(playerid)
+{
+	previous_tick[playerid] = GetTickCount() - (MIN_AC_FLOOD_RATE + 10);
+	return 1;
+}
 
 bool: ac_CheckPlayerFlooding(playerid)
 {

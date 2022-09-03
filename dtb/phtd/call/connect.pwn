@@ -19,4 +19,5 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawColor(playerid, g_PlayerArmourTD[playerid], COLOR_WHITE);
 	PlayerTextDrawSetOutline(playerid, g_PlayerArmourTD[playerid], 1);
 	PlayerTextDrawSetProportional(playerid, g_PlayerArmourTD[playerid], 1);
+	return 1;
 }

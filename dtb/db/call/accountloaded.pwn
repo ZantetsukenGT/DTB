@@ -2,7 +2,7 @@ hook OnPlayerAccountLoaded(playerid)
 {
 	new rows;
 	if (!cache_get_row_count(rows))
-		return 1;
+		return ~1;
 	if (rows == 0)
 	{
 		SendClientMessage(playerid, COLOR_RED, "This name is not registered! Use /Register to register this name.");
@@ -49,5 +49,5 @@ hook OnPlayerAccountLoaded(playerid)
 			mysql_tquery(g_DBHandle, query, "OnPlayerAutoLogin", "i", playerid);
 		}
 	}
-	return 1;
+	return ~1;
 }

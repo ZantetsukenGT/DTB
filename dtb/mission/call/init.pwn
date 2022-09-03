@@ -15,4 +15,5 @@ hook OnGameModeInit()
 		TextDrawSetShadow(g_ObjectiveTD[teamid], 2);
 		TextDrawTextSize(g_ObjectiveTD[teamid], 20.0, 400.0);
 	}
+	return 1;
 }

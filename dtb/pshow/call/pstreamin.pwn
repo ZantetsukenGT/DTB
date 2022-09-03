@@ -6,4 +6,5 @@ hook OnPlayerStreamIn(playerid, forplayerid)
 		ShowPlayerForPlayer(playerid, forplayerid, true);
 	else
 		ShowPlayerForPlayer(playerid, forplayerid, g_IsPlayerShown { playerid });
+	return 1;
 }

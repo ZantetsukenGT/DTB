@@ -4,7 +4,10 @@
 hook OnPlayerSpawn(playerid)
 {
 	if (g_PlayerTeam[playerid] == TEAM_SPECTATE)
-		return TogglePlayerSpectating(playerid, true), 1;
+	{
+		TogglePlayerSpectating(playerid, true);
+		return ~1;
+	}
 
 	if (g_PlayerTeam[playerid] == TEAM_NONE)
 	{
@@ -18,7 +21,7 @@ hook OnPlayerSpawn(playerid)
 
 			// Set team to spectator
 			PlayerJoinTeam(playerid, TEAM_SPECTATE);
-			return 1;
+			return ~1;
 		}
 
 		new teamid = GetTeamToJoin(), total_players, alive_players, dead_players;
@@ -35,7 +38,7 @@ hook OnPlayerSpawn(playerid)
 
 			// Set team to spectator
 			PlayerJoinTeam(playerid, TEAM_SPECTATE);
-			return 1;
+			return ~1;
 		}
 
 		PlayerJoinTeam(playerid, teamid);

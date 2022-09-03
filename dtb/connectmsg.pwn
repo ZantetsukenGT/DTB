@@ -11,4 +11,5 @@ hook OnPlayerConnect(playerid)
 
 	SetPlayerColor(playerid, COLOR_WHITE);
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 200);
+	return 1;
 }

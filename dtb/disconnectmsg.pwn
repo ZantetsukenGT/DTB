@@ -22,4 +22,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	// Death Message
 	SetPlayerColor(playerid, COLOR_WHITE);
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 201);
+	return 1;
 }

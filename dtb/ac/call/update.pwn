@@ -4,7 +4,11 @@
 static previous_tick[MAX_PLAYERS];
 static previous_vehicle[MAX_PLAYERS];
 
-hook OnPlayerConnect(playerid) { previous_tick[playerid] = GetTickCount() - 1100; }
+hook OnPlayerConnect(playerid)
+{
+	previous_tick[playerid] = GetTickCount() - 1100;
+	return 1;
+}
 
 hook OnPlayerUpdate(playerid)
 {
@@ -24,4 +28,5 @@ hook OnPlayerUpdate(playerid)
 		ac_CheckPlayerFlooding(playerid);
 		previous_vehicle[playerid] = vehicleid;
 	}
+	return 1;
 }

@@ -16,4 +16,5 @@ hook OnBombPlanted(playerid, bombsiteid)
 		SetPlayerCameraAtBombsite(loop_playerid, bombsiteid);
 		TogglePlayerControllable(loop_playerid, false);
 	}
+	return 1;
 }

@@ -26,4 +26,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	g_PlayerBombsPlanted[playerid]	   = 0;
 	g_PlayerBombsDefused[playerid]	   = 0;
 	g_PlayerPlayTime[playerid]		   = 0;
+	return 1;
 }

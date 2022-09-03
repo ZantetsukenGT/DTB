@@ -17,4 +17,5 @@ hook OnPlayerDeath(playerid, killerid, reason)
 		if (g_PlayerDamagedBy[playerid][assistid])
 			GivePlayerXP(assistid, 1, "Assisted Kill");
 	}
+	return 1;
 }
