@@ -4,11 +4,6 @@
 #define MAX_SALT		   (20)
 #define MAX_LOGIN_ATTEMPTS (5)
 
-#define SQL_HOST		   ("127.0.0.1")
-#define SQL_USER		   ("root")
-#define SQL_DB			   ("db_name")
-#define SQL_PASSWORD	   ("db_password")
-
 new MySQL: g_DBHandle;
 new g_PlayerAccountID[MAX_PLAYERS];
 new bool: g_IsPlayerRegistered[MAX_PLAYERS char];
