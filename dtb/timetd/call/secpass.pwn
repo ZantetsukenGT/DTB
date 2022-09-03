@@ -49,7 +49,7 @@ hook OnSecondPassed()
 			else
 			{
 				new string[MAX_MAP_NAME + 21];
-				format(string, sizeof string, "~w~loading ~r~%s~w~...", mapname, g_GameTime);
+				format(string, sizeof string, "~w~loading ~r~%s~w~...", mapname);
 				TextDrawSetString(g_GameTimeTD, string);
 			}
 		}
