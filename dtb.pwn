@@ -320,10 +320,10 @@
 // OnPlayerDamageDone
 #include "dtb/skinhit/call/damagedone.pwn"
 
-// On
+// OnPlayerDeathFinished
 #include "dtb/skinhit/call/deathfinished.pwn"
 
-// OnPlayerDamage
+// OnPlayerPrepareDeath
 #include "dtb/skinhit/call/preparedeath.pwn"
 
 // OnPlayerStateChange
