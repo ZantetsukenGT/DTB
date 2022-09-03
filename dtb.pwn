@@ -297,7 +297,6 @@
 #include "dtb/ac/call/update.pwn"
 #include "dtb/bomb/call/update.pwn"
 #include "dtb/warzone/call/update.pwn"
-#include "dtb/spec/call/update.pwn"
 #include "dtb/antilag/call/update.pwn"
 #include "dtb/pshow/call/update.pwn"
 #include "dtb/hpicon/call/update.pwn"
@@ -356,6 +355,7 @@
 
 // OnPlayerKeystateChanged
 #include "dtb/bomb/call/keystate.pwn"
+#include "dtb/spec/call/keystate.pwn"
 
 // OnPlayerPickupPickup
 #include "dtb/bomb/call/pickup.pwn"
