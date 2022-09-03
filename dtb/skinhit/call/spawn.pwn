@@ -3,6 +3,6 @@
 
 hook OnPlayerSpawn(playerid)
 {
-	SetPlayerTeam(playerid, 0);
+	SetPlayerTeam(playerid, playerid);
 	return 1;
 }
