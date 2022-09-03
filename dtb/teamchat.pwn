@@ -5,14 +5,15 @@ hook OnPlayerText(playerid, text[])
 {
 	if (text[0] == '!')
 	{
-		if (text[1] == '\0')
-			return 0;
+		new start = 1, end = strlen(text);
+		if (!Trim_HasContent(text, start, end))
+			return ~0;
 
 		new teamid = g_PlayerTeam[playerid];
 		if (teamid == TEAM_ATTACK || teamid == TEAM_DEFEND)
 		{
-			new message[128];
-			format(message, sizeof(message), "(%s) %s: %s", g_TeamNames[teamid], g_PlayerName[playerid], text[1]);
+			new message[144];
+			format(message, sizeof(message), "(%s) %s: %s", g_TeamNames[teamid], g_PlayerName[playerid], text[start]);
 
 			foreach (new i : Player)
 			{
@@ -22,7 +23,7 @@ hook OnPlayerText(playerid, text[])
 		}
 		else
 			SendClientMessage(playerid, COLOR_RED, "This chat is restricted for teams!");
-		return 0;
+		return ~0;
 	}
 	return 1;
 }
