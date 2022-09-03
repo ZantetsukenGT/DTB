@@ -320,7 +320,7 @@
 // OnPlayerDamageDone
 #include "dtb/skinhit/call/damagedone.pwn"
 
-// OnPlayerDamage
+// On
 #include "dtb/skinhit/call/deathfinished.pwn"
 
 // OnPlayerDamage

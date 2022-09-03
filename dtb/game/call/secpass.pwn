@@ -10,7 +10,7 @@ hook OnSecondPassed()
 			GetTeamPlayers(teamid, total_players, alive_players[teamid], dead_players);
 
 		if (alive_players[TEAM_ATTACK] == 0 || alive_players[TEAM_DEFEND] == 0)
-			return ~0;
+			return 0;
 
 		if (g_GameTime > 0)
 		{
