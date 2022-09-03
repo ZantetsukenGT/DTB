@@ -376,7 +376,7 @@
 #include "dtb/veh/call/vstreamin.pwn"
 
 // OnRconLoginAttempt
-#include "dtb/rconkick.pwn"
+#include "dtb/rconlogin.pwn"
 
 // Commands
 #include "dtb/cmd/stats.pwn"
