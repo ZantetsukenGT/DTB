@@ -1,4 +1,6 @@
 
+#include <YSI_Coding\y_hooks>
+
 hook UpdateBombDefuse()
 {
 	new mapid = g_MapID,

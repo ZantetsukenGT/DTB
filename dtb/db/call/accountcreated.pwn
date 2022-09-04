@@ -1,3 +1,6 @@
+
+#include <YSI_Coding\y_hooks>
+
 hook OnPlayerAccountCreated(playerid)
 {
 	if (cache_affected_rows() > 0)

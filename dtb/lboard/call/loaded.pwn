@@ -1,3 +1,6 @@
+
+#include <YSI_Coding\y_hooks>
+
 hook OnLeaderboardLoaded(playerid, dialogid)
 {
 	switch (dialogid)

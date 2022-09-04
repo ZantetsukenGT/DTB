@@ -1,3 +1,6 @@
+
+#include <YSI_Coding\y_hooks>
+
 hook OnPlayerAccRegistered(playerid)
 {
 	g_IsPlayerRegistered { playerid } = true;
