@@ -237,4 +237,3 @@ new const g_MapData[][e_MapData] = {
 
 new g_MapID;
 new g_NextMapID;
-new bool: g_NextMapLoaded;

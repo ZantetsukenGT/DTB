@@ -1,6 +1,8 @@
 
-OnGameStart()
+#include <YSI_Coding\y_hooks>
+
+hook function OnGameStart()
 {
-	SetMapID(g_NextMapLoaded ? g_NextMapID : GetRandomMap());
-	return 1;
+	SetMapID(g_NextMapID);
+	return continue();
 }

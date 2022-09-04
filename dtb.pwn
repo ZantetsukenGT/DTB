@@ -51,7 +51,6 @@
 #include "dtb/wepmenu/data.pwn" // weapon selection
 #include "dtb/tptd/data.pwn"	// HUD; alive & dead team players
 #include "dtb/thtd/data.pwn"	// HUD; team current health
-#include "dtb/phtd/data.pwn"	// HUD; player current health & armour
 #include "dtb/sbtd/data.pwn"	// HUD; scoreboard at end of rounds
 #include "dtb/timetd/data.pwn"	// HUD; time left of the round
 #include "dtb/antilag/data.pwn" // Monitors fps, ping, packetloss and auto kicks
@@ -196,10 +195,10 @@
 #include "dtb/game/call/secpass.pwn"
 
 // OnGameStart
-#include "dtb/map/call/gamestart.pwn"
 #include "dtb/bomb/call/gamestart.pwn"
 #include "dtb/warzone/call/gamestart.pwn"
 #include "dtb/game/call/gamestart.pwn"
+#include "dtb/map/call/gamestart.pwn"
 
 // OnGameEnd
 #include "dtb/map/call/gameend.pwn"
@@ -232,7 +231,6 @@
 #include "dtb/wepmenu/call/connect.pwn"
 #include "dtb/sbtd/call/connect.pwn"
 #include "dtb/antilag/call/connect.pwn"
-#include "dtb/phtd/call/connect.pwn"
 
 // OnPlayerDisconnect
 #include "dtb/ac/call/disconnect.pwn"
@@ -246,7 +244,6 @@
 #include "dtb/wepmenu/call/disconnect.pwn"
 #include "dtb/sbtd/call/disconnect.pwn"
 #include "dtb/antilag/call/disconnect.pwn"
-#include "dtb/phtd/call/disconnect.pwn"
 #include "dtb/hpicon/call/disconnect.pwn"
 #include "dtb/db/call/disconnect.pwn"
 
@@ -257,11 +254,9 @@
 #include "dtb/db/call/ban.pwn"
 
 // OnPlayerHealthSet
-#include "dtb/phtd/call/healthset.pwn"
 #include "dtb/hpicon/call/healthset.pwn"
 
 // OnPlayerArmourSet
-#include "dtb/phtd/call/armourset.pwn"
 #include "dtb/hpicon/call/armourset.pwn"
 
 // OnPlayerText
@@ -329,7 +324,6 @@
 // OnPlayerStateChange
 #include "dtb/level/call/statechange.pwn"
 #include "dtb/spec/call/statechange.pwn"
-#include "dtb/phtd/call/statechange.pwn"
 
 // DB Query callbacks
 #include "dtb/db/call/accountloaded.pwn"
@@ -405,8 +399,6 @@
 #include "dtb/cmd/leaderboard.pwn"
 
 /******************************************************************************/
-
-#include <YSI_Coding\y_hooks>
 
 main() {}
 

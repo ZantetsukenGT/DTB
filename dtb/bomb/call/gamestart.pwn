@@ -1,7 +1,5 @@
 
-#include <YSI_Coding\y_hooks>
-
-hook function OnGameStart()
+OnGameStart()
 {
 	new mapid = g_MapID,
 		Float: x,
@@ -16,5 +14,5 @@ hook function OnGameStart()
 		CreateBombsiteIcon(bombsite);
 		CreateBombsiteObjects(bombsite);
 	}
-	return continue();
+	return 1;
 }

@@ -3,7 +3,6 @@
 
 hook OnGameEnd(reason)
 {
-	g_NextMapID		= GetRandomMap();
-	g_NextMapLoaded = true;
+	g_NextMapID = GetRandomMap();
 	return 1;
 }
