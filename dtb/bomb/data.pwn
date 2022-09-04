@@ -1,6 +1,6 @@
 #define INVALID_PICKUP_ID	-1
 #define INVALID_BOMBSITE_ID 2
-#define PLANT_TIME			5000
+#define PLANT_TIME			3200
 #define DEFUSE_TIME			5000
 #define BOMB_ANIM_SPEED		4.1
 #define BOMB_ATTACH_INDEX	9

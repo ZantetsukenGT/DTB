@@ -28,8 +28,8 @@ SetPlayerCameraAtBombsite(playerid, bombsiteid)
 	to_z   = bomb_z + 2.0;
 
 	// Move camera position
-	InterpolateCameraPos(playerid, from_x, from_y, from_z, to_x, to_y, to_z, 5 * 1000, CAMERA_MOVE);
+	InterpolateCameraPos(playerid, from_x, from_y, from_z, to_x, to_y, to_z, 2 * 1000, CAMERA_MOVE);
 
 	// Move camera look at
-	InterpolateCameraLookAt(playerid, bomb_x, bomb_y, bomb_z, bomb_x, bomb_y, bomb_z, 5 * 1000, CAMERA_MOVE);
+	InterpolateCameraLookAt(playerid, bomb_x, bomb_y, bomb_z, bomb_x, bomb_y, bomb_z, 2 * 1000, CAMERA_MOVE);
 }

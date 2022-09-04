@@ -18,7 +18,7 @@ hook UpdateBombPlant()
 			g_IsBombBeingPlanted = false;
 			KillTimer(g_BombPlantTimer);
 		}
-		g_GameTime		= 60;
+		g_GameTime		= 40;
 		g_IsBombPlanted = true;
 
 		// Create Bomb
@@ -82,7 +82,7 @@ StartPlayerPlantingBomb(playerid, bombsiteid)
 	g_BombPlanterID	 = playerid;
 	g_BombPlantTick	 = GetTickCount();
 	g_BombPlantSite	 = bombsiteid;
-	g_BombPlantTimer = SetTimer("UpdateBombPlant", 200, true);
+	g_BombPlantTimer = SetTimer("UpdateBombPlant", 50, true);
 	return 1;
 }
 

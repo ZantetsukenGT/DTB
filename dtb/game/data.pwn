@@ -1,6 +1,6 @@
-#define COUNTDOWN_TIME	  (10)
-#define MISSION_TIME	  (3 * 60)
-#define INTERMISSION_TIME (15)
+#define COUNTDOWN_TIME	  (5)
+#define MISSION_TIME	  (1 * 60 + 55)
+#define INTERMISSION_TIME (4)
 
 new g_GameTime, g_GameState, g_GameTimer, g_GameWinner;
 
