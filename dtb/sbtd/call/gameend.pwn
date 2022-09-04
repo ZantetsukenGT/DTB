@@ -113,16 +113,11 @@ hook OnGameEnd(reason)
 	{
 		new ref_teamid = g_PlayerTeam[ref_playerid];
 
-		switch (ref_teamid)
-		{
-			case TEAM_ATTACK, TEAM_DEFEND:
-			{
-			}				   // Add this player
-			default: continue; // Skip this player
-		}
+		if (ref_teamid != TEAM_ATTACK && ref_teamid != TEAM_DEFEND)
+			continue; // Skip this player
 
-		new ref_index, Float: ref_health = GetPlayerHealth(ref_playerid),
-			Float: ref_armour = GetPlayerArmour(ref_playerid),
+		new ref_index,
+			Float: ref_health_armour = GetPlayerHealth(ref_playerid) + GetPlayerArmour(ref_playerid),
 			Float: ref_accuracy = GetPlayerAccuracy(ref_playerid);
 
 		foreach (new cmp_playerid : Player)
@@ -141,15 +136,12 @@ hook OnGameEnd(reason)
 					ref_index++;
 				else if (g_PlayerRoundDamage[cmp_playerid] == g_PlayerRoundDamage[ref_playerid])
 				{
-					new Float: cmp_health = GetPlayerHealth(cmp_playerid),
-						Float: cmp_armour = GetPlayerArmour(cmp_playerid);
-
-					if ((cmp_health + cmp_armour) > (ref_health + ref_armour))
+					new Float: cmp_health_armour = GetPlayerHealth(cmp_playerid) + GetPlayerArmour(cmp_playerid);
+					if (cmp_health_armour > ref_health_armour)
 						ref_index++;
-					else if ((cmp_health + cmp_armour) == (ref_health + ref_armour))
+					else if (cmp_health_armour == ref_health_armour)
 					{
 						new Float: cmp_accuracy = GetPlayerAccuracy(cmp_playerid);
-
 						if (cmp_accuracy > ref_accuracy || (cmp_accuracy == ref_accuracy && ref_playerid > cmp_playerid))
 							ref_index++;
 					}
@@ -172,7 +164,7 @@ hook OnGameEnd(reason)
 		{
 			new health_str[4];
 
-			format(health_str, sizeof health_str, "%i", floatround(ref_health) + floatround(ref_armour));
+			format(health_str, sizeof(health_str), "%i", floatround(ref_health_armour));
 			TextDrawSetString(g_ScoreboardHealthTD[ref_teamid][ref_index], health_str);
 		}
 		TextDrawShowForAll(g_ScoreboardHealthTD[ref_teamid][ref_index]);
@@ -180,21 +172,21 @@ hook OnGameEnd(reason)
 		// Score Column
 		new score[3];
 
-		format(score, sizeof score, "%i", g_PlayerRoundScore[ref_playerid]);
+		format(score, sizeof(score), "%i", g_PlayerRoundScore[ref_playerid]);
 		TextDrawSetString(g_ScoreboardScoreTD[ref_teamid][ref_index], score);
 		TextDrawShowForAll(g_ScoreboardScoreTD[ref_teamid][ref_index]);
 
 		// Damage Column
 		new damage[5];
 
-		format(damage, sizeof damage, "%i", floatround(g_PlayerRoundDamage[ref_playerid]));
+		format(damage, sizeof(damage), "%i", floatround(g_PlayerRoundDamage[ref_playerid]));
 		TextDrawSetString(g_ScoreboardDamageTD[ref_teamid][ref_index], damage);
 		TextDrawShowForAll(g_ScoreboardDamageTD[ref_teamid][ref_index]);
 
 		// Accuracy Column
 		new accuracy[8];
 
-		format(accuracy, sizeof accuracy, "%.2f%%", ref_accuracy);
+		format(accuracy, sizeof(accuracy), "%.2f%%", ref_accuracy);
 		TextDrawSetString(g_ScoreboardAccuracyTD[ref_teamid][ref_index], accuracy);
 		TextDrawShowForAll(g_ScoreboardAccuracyTD[ref_teamid][ref_index]);
 	}
