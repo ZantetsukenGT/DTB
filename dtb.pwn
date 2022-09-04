@@ -172,6 +172,7 @@
 #include "dtb/mission/call/init.pwn"
 #include "dtb/game/call/init.pwn"
 #include "dtb/veh/call/init.pwn"
+#include "dtb/skinhit/call/init.pwn"
 
 // OnGameModeExit
 #include "dtb/db/call/exit.pwn"
