@@ -7,7 +7,7 @@ UpdateTeamHealthTextdraws(teamid)
 
 	GetTeamHealth(teamid, current_health, max_health);
 	percent_health = float(current_health) / float(max_health);
-	format(string, sizeof string, "%i", floatround(current_health));
+	format(string, sizeof(string), "%i", floatround(current_health));
 
 	TextDrawSetString(g_TeamTextHealthTD[teamid], string);
 	TextDrawShowForAll(g_TeamTextHealthTD[teamid]);

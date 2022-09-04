@@ -11,7 +11,7 @@ COMMAND:register(playerid, const password[])
 	{
 		new msg[128];
 		format(
-			msg, sizeof msg, "Invalid length of password! The valid length is %i - %i characters!", MIN_PASSWORD, MAX_PASSWORD);
+			msg, sizeof(msg), "Invalid length of password! The valid length is %i - %i characters!", MIN_PASSWORD, MAX_PASSWORD);
 		SendClientMessage(playerid, COLOR_RED, msg);
 		return 1;
 	}

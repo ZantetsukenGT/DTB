@@ -42,7 +42,7 @@ ShowPlayerWeaponMenu(playerid, menu_index)
 		{
 			new weaponid = g_pMenuWeapons[playerid][a], modelid = GetWeaponModel(weaponid), weaponname[20];
 
-			GetWeaponName(weaponid, weaponname, sizeof weaponname);
+			GetWeaponName(weaponid, weaponname, sizeof(weaponname));
 
 			PlayerTextDrawSetPreviewModel(playerid, g_WeaponMenuIconTD[playerid][a], modelid);
 			PlayerTextDrawSetString(playerid, g_WeaponMenuNameTD[playerid][a], weaponname);

@@ -19,7 +19,7 @@ ac_CheckPlayerWeapons(playerid)
 				{
 					new weaponname[20], reason[50];
 
-					GetWeaponName(client_weaponid, weaponname, sizeof weaponname);
+					GetWeaponName(client_weaponid, weaponname, sizeof(weaponname));
 					format(reason, sizeof(reason), "Weapon Hacks (%s, %i)", weaponname, client_ammo);
 					BanPlayer(playerid, reason);
 				}

@@ -19,14 +19,14 @@ COMMAND:pm(playerid, params[])
 
 	new send_string[128], receive_string[128], admin_string[128];
 
-	format(send_string, sizeof send_string, "PM sent to %s (ID: %i): %s", g_PlayerName[id], id, message);
+	format(send_string, sizeof(send_string), "PM sent to %s (ID: %i): %s", g_PlayerName[id], id, message);
 	SendClientMessage(playerid, COLOR_YELLOW, send_string);
 
-	format(receive_string, sizeof receive_string, "PM received from %s (ID: %i): %s", g_PlayerName[playerid], playerid, message);
+	format(receive_string, sizeof(receive_string), "PM received from %s (ID: %i): %s", g_PlayerName[playerid], playerid, message);
 	SendClientMessage(id, COLOR_YELLOW, receive_string);
 
 	format(
-		admin_string, sizeof admin_string, "PM Sent from %s (ID: %i) to %s (ID: %i) below:", g_PlayerName[playerid], playerid,
+		admin_string, sizeof(admin_string), "PM Sent from %s (ID: %i) to %s (ID: %i) below:", g_PlayerName[playerid], playerid,
 		g_PlayerName[id], id);
 
 	foreach (new adminid : Player)

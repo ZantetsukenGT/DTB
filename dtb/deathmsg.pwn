@@ -11,7 +11,7 @@ hook OnPlayerDeath(playerid, killerid, reason)
 			Float: armour = GetPlayerArmour(killerid),
 			message[128];
 
-		GetWeaponName(reason, reason_name, sizeof reason_name);
+		GetWeaponName(reason, reason_name, sizeof(reason_name));
 
 		format(
 			message, sizeof(message), "%s {%06x}killed{%06x} %s {%06x}| %s | %.2fM | +%i", g_PlayerName[killerid],

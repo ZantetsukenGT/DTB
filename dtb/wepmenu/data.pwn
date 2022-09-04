@@ -6,9 +6,9 @@ new const g_MenuWeapons[]
 
 new g_pWeaponMenu[MAX_PLAYERS char];
 new g_pChosenWeapons[MAX_PLAYERS][2];
-new g_pMenuWeapons[MAX_PLAYERS][sizeof g_MenuWeapons];
+new g_pMenuWeapons[MAX_PLAYERS][sizeof(g_MenuWeapons)];
 new PlayerText: g_WeaponMenuBoxTD[MAX_PLAYERS]	 = { PlayerText: INVALID_TEXT_DRAW, ... };
 new PlayerText: g_WeaponMenuBackTD[MAX_PLAYERS]	 = { PlayerText: INVALID_TEXT_DRAW, ... };
 new PlayerText: g_WeaponMenuTitleTD[MAX_PLAYERS] = { PlayerText: INVALID_TEXT_DRAW, ... };
-new PlayerText: g_WeaponMenuIconTD[MAX_PLAYERS][sizeof g_MenuWeapons];
-new PlayerText: g_WeaponMenuNameTD[MAX_PLAYERS][sizeof g_MenuWeapons];
+new PlayerText: g_WeaponMenuIconTD[MAX_PLAYERS][sizeof(g_MenuWeapons)];
+new PlayerText: g_WeaponMenuNameTD[MAX_PLAYERS][sizeof(g_MenuWeapons)];

@@ -37,7 +37,7 @@ hook OnPlayerUpdate(playerid)
 			if (warningsleft > 0)
 			{
 				new string[32];
-				format(string, sizeof string, "leaving warzone~n~in %i seconds", warningsleft);
+				format(string, sizeof(string), "leaving warzone~n~in %i seconds", warningsleft);
 				PlayerTextDrawSetString(playerid, g_ZoneTextTD[playerid], string);
 				g_PlayerZoneWarnings { playerid }++;
 			}

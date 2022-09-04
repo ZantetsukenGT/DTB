@@ -27,8 +27,8 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 		new saltpass[MAX_PASSWORD + MAX_SALT + 1], hash[MAX_PASSWORD_HASH + 1];
 
-		SaltPassword(saltpass, sizeof saltpass, inputtext, g_PlayerSalt[playerid]);
-		WP_Hash(hash, sizeof hash, saltpass);
+		SaltPassword(saltpass, sizeof(saltpass), inputtext, g_PlayerSalt[playerid]);
+		WP_Hash(hash, sizeof(hash), saltpass);
 
 		if (!strcmp(g_PlayerPassword[playerid], hash))
 			LoginPlayer(playerid, accountid, false);

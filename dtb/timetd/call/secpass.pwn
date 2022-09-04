@@ -10,7 +10,7 @@ hook OnSecondPassed()
 			if (g_GameTime > 0)
 			{
 				new string[3];
-				format(string, sizeof string, "%i", g_GameTime);
+				format(string, sizeof(string), "%i", g_GameTime);
 				TextDrawSetString(g_GameTimeTD, string);
 			}
 			else
@@ -23,7 +23,7 @@ hook OnSecondPassed()
 				new string[6];
 				if (g_IsBombPlanted && !g_IsBombDefused)
 				{
-					format(string, sizeof string, "~r~%i", g_GameTime);
+					format(string, sizeof(string), "~r~%i", g_GameTime);
 					TextDrawSetString(g_GameTimeTD, string);
 				}
 				else
@@ -38,18 +38,18 @@ hook OnSecondPassed()
 		case STATE_FINISHED:
 		{
 			new mapname[MAX_MAP_NAME + 1];
-			GetMapName(mapname, sizeof mapname, g_NextMapID);
+			GetMapName(mapname, sizeof(mapname), g_NextMapID);
 
 			if (g_GameTime > 0)
 			{
 				new string[MAX_MAP_NAME + 35];
-				format(string, sizeof string, "~w~loading ~r~%s~w~ in %i seconds...", mapname, g_GameTime);
+				format(string, sizeof(string), "~w~loading ~r~%s~w~ in %i seconds...", mapname, g_GameTime);
 				TextDrawSetString(g_GameTimeTD, string);
 			}
 			else
 			{
 				new string[MAX_MAP_NAME + 21];
-				format(string, sizeof string, "~w~loading ~r~%s~w~...", mapname);
+				format(string, sizeof(string), "~w~loading ~r~%s~w~...", mapname);
 				TextDrawSetString(g_GameTimeTD, string);
 			}
 		}

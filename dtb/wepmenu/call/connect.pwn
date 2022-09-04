@@ -31,7 +31,7 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawTextSize(playerid, g_WeaponMenuBackTD[playerid], 10.0, 106.0);
 	PlayerTextDrawSetSelectable(playerid, g_WeaponMenuBackTD[playerid], 1);
 
-	for (new height, item, limit = sizeof g_MenuWeapons; height < 4; height++)
+	for (new height, item, limit = sizeof(g_MenuWeapons); height < 4; height++)
 	{
 		for (new width; width < 5; width++, item++)
 		{

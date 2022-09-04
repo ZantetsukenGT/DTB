@@ -17,7 +17,7 @@ hook OnPlayerDisconnect(playerid, reason)
 	g_WeaponMenuTitleTD[playerid] = PlayerText: INVALID_TEXT_DRAW;
 	g_WeaponMenuBackTD[playerid]  = PlayerText: INVALID_TEXT_DRAW;
 
-	for (new item, limit = sizeof g_MenuWeapons; item < limit; item++)
+	for (new item, limit = sizeof(g_MenuWeapons); item < limit; item++)
 	{
 		PlayerTextDrawDestroy(playerid, g_WeaponMenuIconTD[playerid][item]);
 		PlayerTextDrawDestroy(playerid, g_WeaponMenuNameTD[playerid][item]);
