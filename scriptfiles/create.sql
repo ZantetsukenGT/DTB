@@ -10,11 +10,13 @@ CREATE TABLE sessions
 	session_start DATETIME NOT NULL,
 	session_end DATETIME NOT NULL,
 	session_login BOOLEAN NOT NULL,
-	session_login_attempt TINYINT NOT NULL,
-	PRIMARY KEY (session_account_id)
+	session_login_attempt TINYINT NOT NULL
 );
 
-CREATE INDEX sessions_idx
+CREATE INDEX sessions_idx1
+ON sessions(session_account_id);
+
+CREATE INDEX sessions_idx2
 ON sessions(session_ip);
 
 CREATE TABLE setadmin
