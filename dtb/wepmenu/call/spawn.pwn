@@ -7,7 +7,6 @@ hook OnPlayerSpawn(playerid)
 	{
 		case TEAM_ATTACK, TEAM_DEFEND:
 		{
-			SendClientMessage(playerid, COLOR_GREEN, "Showing Menu");
 			ShowPlayerWeaponMenu(playerid, 0);
 			SelectTextDraw(playerid, COLOR_RED);
 		}
