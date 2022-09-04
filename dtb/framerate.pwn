@@ -17,7 +17,7 @@ stock GetPlayerFramerate(playerid) { return s_FPS[playerid]; }
 
 IPacket:FPS_UPDATE_SYNC(playerid, BitStream:bs)
 {
-	new currentDrunkLevel;
+	static currentDrunkLevel;
 
 	BS_SetReadOffset(bs, 8 + 32);
 	BS_ReadInt32(bs, currentDrunkLevel);
