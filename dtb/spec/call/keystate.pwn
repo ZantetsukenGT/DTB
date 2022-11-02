@@ -1,6 +1,9 @@
 
 #include <YSI_Coding\y_hooks>
 
+static GetPrevTarget(target) { return target == Iter_First(Player) ? Iter_Last(Player) : Iter_Prev(Player, target); }
+static GetNextTarget(target) { return target == Iter_Last(Player) ? Iter_First(Player) : Iter_Next(Player, target); }
+
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if (IsPlayerSpectating(playerid))
@@ -15,16 +18,10 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					return 1;
 			}
 
-			for (new target = currentTarget;;)
+			for (new target = GetPrevTarget(currentTarget); target != currentTarget; target = GetPrevTarget(target))
 			{
-				if ((target = Iter_Prev(Player, target)) == Iter_Begin(Player))
-					target = Iter_Last(Player);
-				if (target == currentTarget)
-					break;
-				if (!IsPlayerSpawned(target))
-					continue;
-
-				if (TEAM_ATTACK <= g_PlayerTeam[playerid] <= TEAM_DEFEND && g_PlayerTeam[playerid] != g_PlayerTeam[target])
+				if (!IsPlayerSpawned(target)
+					|| TEAM_ATTACK <= g_PlayerTeam[playerid] <= TEAM_DEFEND && g_PlayerTeam[playerid] != g_PlayerTeam[target])
 					continue;
 
 				PlayerSpectatePlayer(playerid, target);
@@ -41,16 +38,10 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					return 1;
 			}
 
-			for (new target = currentTarget;;)
+			for (new target = GetNextTarget(currentTarget); target != currentTarget; target = GetNextTarget(target))
 			{
-				if ((target = Iter_Next(Player, target)) == Iter_End(Player))
-					target = Iter_First(Player);
-				if (target == currentTarget)
-					break;
-				if (!IsPlayerSpawned(target))
-					continue;
-
-				if (TEAM_ATTACK <= g_PlayerTeam[playerid] <= TEAM_DEFEND && g_PlayerTeam[playerid] != g_PlayerTeam[target])
+				if (!IsPlayerSpawned(target)
+					|| TEAM_ATTACK <= g_PlayerTeam[playerid] <= TEAM_DEFEND && g_PlayerTeam[playerid] != g_PlayerTeam[target])
 					continue;
 
 				PlayerSpectatePlayer(playerid, target);
