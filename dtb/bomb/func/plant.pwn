@@ -85,7 +85,7 @@ StartPlayerPlantingBomb(playerid, bombsiteid)
 	g_BombPlanterID	 = playerid;
 	g_BombPlantTick	 = GetTickCount();
 	g_BombPlantSite	 = bombsiteid;
-	g_BombPlantTimer = SetTimer("UpdateBombPlant", 50, true);
+	g_BombPlantTimer = SetTimer("UpdateBombPlant", 25, true);
 	return 1;
 }
 

@@ -81,7 +81,7 @@ StartPlayerDefusingBomb(playerid)
 		g_IsBombBeingDefused = true;
 	g_BombDefuserID	  = playerid;
 	g_BombDefuseTick  = GetTickCount();
-	g_BombDefuseTimer = SetTimer("UpdateBombDefuse", 200, true);
+	g_BombDefuseTimer = SetTimer("UpdateBombDefuse", 25, true);
 	return 1;
 }
 
